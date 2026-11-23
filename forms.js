@@ -1,7 +1,7 @@
 /* Islamic Parenting 101 — forms. Fill in the two endpoints below, then every sign-up box and the contact form switch on automatically.
    signup: the MailerLite embedded-form "subscribe" URL (https://assets.mailerlite.com/jsonp/<ACCOUNT_ID>/forms/<FORM_ID>/subscribe)
    contact: the Formspree form URL (https://formspree.io/f/<FORM_ID>) */
-window.SITE_FORMS = { signup: "mailerlite", mlAccount: "2818911", contact: "" };
+window.SITE_FORMS = { signup: "mailerlite", mlAccount: "2818911", contact: "https://formspree.io/f/mljbopga" };
 (function () {
   var C = window.SITE_FORMS;
   if (C.signup) { /* MailerLite universal script (renders the .ml-embedded forms) */
