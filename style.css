@@ -104,3 +104,18 @@ footer{background:#efe3d4;margin-top:60px;padding:34px 0;font-size:15px}
 .hub ul{list-style:none;padding:0;margin:0}.hub li{padding:12px 0;border-bottom:1px solid #f0e4d6}.hub li:last-child{border:0}
 .hub span{font-size:15px;color:#6a5a4e}
 .script{background:#fff;border-left:6px solid var(--sage);border-radius:10px;padding:14px 20px;margin:18px 0;font-style:italic}
+
+/* forms */
+.signup{background:linear-gradient(135deg,#fff,#F3D9CF);border:2px solid var(--blush);border-radius:20px;padding:24px;margin:36px 0;text-align:center}
+.signup[hidden],.needs-signup[hidden],.needs-contact[hidden],.contact-fallback[hidden]{display:none}
+.signup h3{margin:0 0 6px;font-size:24px}.signup p{margin:.2em 0 14px}
+.sform{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.sform input,.cform input,.cform textarea{font:inherit;padding:13px 16px;border:2px solid #e2d3c0;border-radius:14px;background:#fff;color:var(--brown);min-width:0}
+.sform input{flex:1 1 200px}.sform button,.cform button{font:inherit;font-weight:900;border:0;cursor:pointer}
+.sform .btn,.cform .btn{border:0}
+.cform{display:grid;gap:12px;max-width:560px}.cform textarea{min-height:150px}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.fnote{margin:10px 0 0;font-size:15px}.fnote.ok{color:var(--sage);font-weight:700}.fnote.err{color:#b3261e;font-weight:700}
+.tiny{font-size:13px;color:#7a6a5a;margin-top:10px}
+.kit{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:center}
+@media (max-width:800px){.kit{grid-template-columns:1fr}}

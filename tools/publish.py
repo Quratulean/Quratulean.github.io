@@ -21,6 +21,7 @@ os.chdir(ROOT)
 SITE_URL = open('CNAME').read().strip() if os.path.exists('CNAME') else 'quratulean.github.io'
 BASE = f'https://{SITE_URL}'
 AUTHOR = 'Tabasum Majeed'
+SIGNUP_FORM = '''<form class="signup-form" novalidate><div class="sform"><input type="text" name="name" placeholder="First name (optional)" autocomplete="given-name"><input type="email" name="email" placeholder="Your email" required autocomplete="email"><input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Send me the free kit</button></div><p class="fnote" role="status"></p><p class="tiny">One email with your download, then occasional gentle parenting notes. Unsubscribe anytime.</p></form>'''
 
 def read_post(path):
     raw = open(path, encoding='utf-8').read()
@@ -106,6 +107,7 @@ def build_post(meta, body_md, registry):
     related = ''
     if others:
         related = '<section class="related"><h2>Keep reading</h2><div class="cards">' + ''.join(card(a) for a in others) + '</div></section>'
+    signup = '<div class="signup" hidden><h3>Get the free Calm Mama Starter Kit</h3><p>4 printable cards for calmer days: phrases, Sunnah calm-down steps, a bedtime routine and a weekly planner.</p>' + SIGNUP_FORM + '</div>'
     schema = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": meta['title'],
                          "description": meta['description'], "datePublished": meta['date'],
                          "author": {"@type": "Person", "name": AUTHOR}, "image": f'{BASE}/{img}',
@@ -117,6 +119,7 @@ def build_post(meta, body_md, registry):
 {hero}{toc_html}
 {body}
 {hub}
+{signup}
 <div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>Want the full guide?</b><p>This article draws on <i>Hearts Before Habits</i> — a complete Islamic parenting guide with scripts, du'as, printables and a 30-day plan.</p><a class="btn" href="book.html">See the book</a> <a class="btn ghost" href="printables.html">Free printables</a></div></div>
 {related}
 </article>
@@ -155,12 +158,12 @@ def main():
     json.dump(registry, open('articles.json', 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
     replace_cards('index.html', registry[:3])
     replace_cards('articles.html', registry)
-    pages = ['', 'book.html', 'articles.html', 'printables.html', 'about.html'] + [a['slug'] + '.html' for a in registry]
+    pages = ['', 'book.html', 'articles.html', 'printables.html', 'free-starter-kit.html', 'contact.html', 'about.html'] + [a['slug'] + '.html' for a in registry]
     today = datetime.date.today().isoformat()
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          ''.join(f'  <url><loc>{BASE}/{p}</loc><lastmod>{today}</lastmod></url>\n' for p in pages) + '</urlset>\n'
     open('sitemap.xml', 'w').write(sm)
-    open('robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
+    open('robots.txt', 'w').write(f'User-agent: *\nAllow: /\nDisallow: /gift/\nDisallow: /thank-you.html\nSitemap: {BASE}/sitemap.xml\n')
     print(f'{len(registry)} articles in registry; cards, sitemap.xml, robots.txt updated')
 
 if __name__ == '__main__':

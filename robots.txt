@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /gift/
+Disallow: /thank-you.html
 Sitemap: https://quratulean.github.io/sitemap.xml
