@@ -3,7 +3,7 @@
 Run from repo root: python3 tools/pages.py   (publish.py calls shell() the same way)"""
 import re, html, os
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SIGNUP_FORM = '''<form class="signup-form" novalidate><div class="sform"><input type="text" name="name" placeholder="First name (optional)" autocomplete="given-name"><input type="email" name="email" placeholder="Your email" required autocomplete="email"><input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Send me the free kit</button></div><p class="fnote" role="status"></p><p class="tiny">One email with your download, then occasional gentle parenting notes. Unsubscribe anytime. No spam, ever.</p></form>'''
+SIGNUP_FORM = '''<div class="ml-embedded" data-form="JjOyLM"></div>'''
 def shell():
     src = open('about.html', encoding='utf-8').read()
     head, rest = src.split('<main>', 1); _, foot = rest.split('</main>', 1)

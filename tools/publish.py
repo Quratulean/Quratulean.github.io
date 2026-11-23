@@ -21,7 +21,7 @@ os.chdir(ROOT)
 SITE_URL = open('CNAME').read().strip() if os.path.exists('CNAME') else 'quratulean.github.io'
 BASE = f'https://{SITE_URL}'
 AUTHOR = 'Tabasum Majeed'
-SIGNUP_FORM = '''<form class="signup-form" novalidate><div class="sform"><input type="text" name="name" placeholder="First name (optional)" autocomplete="given-name"><input type="email" name="email" placeholder="Your email" required autocomplete="email"><input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Send me the free kit</button></div><p class="fnote" role="status"></p><p class="tiny">One email with your download, then occasional gentle parenting notes. Unsubscribe anytime.</p></form>'''
+SIGNUP_FORM = '''<div class="ml-embedded" data-form="JjOyLM"></div>'''
 
 def read_post(path):
     raw = open(path, encoding='utf-8').read()
