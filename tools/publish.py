@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+"""Publish blog posts for the Islamic Parenting 101 website.
+
+Usage (from the repo root):  python3 tools/publish.py
+- Converts every posts/<slug>.md (front matter + Markdown) into <slug>.html,
+  using the site's own header/footer (copied from about.html) so design stays consistent.
+- Keeps articles.json (registry of ALL articles, incl. hand-made ones) up to date.
+- Rebuilds the article cards on index.html (latest 3) and articles.html (all, newest first)
+  between the <!--CARDS--> and <!--/CARDS--> markers.
+- Writes sitemap.xml and robots.txt.
+
+Front matter keys (between --- lines at the top of the .md):
+  title, description, date (YYYY-MM-DD), image (optional, path in repo e.g. img/pin-x.jpg),
+  kicker (optional small label), keywords (optional, comma separated)
+"""
+import json, re, html, os, glob, datetime, urllib.parse
+import markdown
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(ROOT)
+SITE_URL = open('CNAME').read().strip() if os.path.exists('CNAME') else 'quratulean.github.io'
+BASE = f'https://{SITE_URL}'
+AUTHOR = 'Tabasum Majeed'
+
+def read_post(path):
+    raw = open(path, encoding='utf-8').read()
+    m = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', raw, re.S)
+    if not m:
+        raise SystemExit(f'{path}: missing front matter')
+    meta = {}
+    for line in m.group(1).splitlines():
+        if ':' in line:
+            k, v = line.split(':', 1)
+            meta[k.strip()] = v.strip().strip('"')
+    for k in ('title', 'description', 'date'):
+        if not meta.get(k):
+            raise SystemExit(f'{path}: front matter needs {k}')
+    meta['slug'] = os.path.splitext(os.path.basename(path))[0]
+    return meta, m.group(2)
+
+def shell():
+    """Header (up to <main>) and footer (from </main>) of an existing page."""
+    src = open('about.html', encoding='utf-8').read()
+    head, rest = src.split('<main>', 1)
+    _, foot = rest.split('</main>', 1)
+    return head, foot
+
+def set_meta(head, title, desc, img, url):
+    t = html.escape(title); d = html.escape(desc)
+    head = re.sub(r'<title>.*?</title>', f'<title>{t} — Islamic Parenting 101</title>', head, flags=re.S)
+    head = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{d}">', head)
+    head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{t}">', head)
+    head = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{d}">', head)
+    head = re.sub(r'<meta property="og:image" content=".*?">', f'<meta property="og:image" content="{BASE}/{img}">', head)
+    head = head.replace('</head>', f'<link rel="canonical" href="{url}">\n<meta property="og:type" content="article">\n</head>', 1)
+    head = re.sub(r' class=on', '', head)
+    head = head.replace('<a href="articles.html">', '<a href="articles.html" class=on>', 1)
+    return head
+
+def slugify(s):
+    return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
+
+def build_post(meta, body_md, registry):
+    md = markdown.Markdown(extensions=['extra', 'sane_lists', 'smarty'])
+    body = md.convert(body_md)
+    # ids on h2 for the table of contents
+    toc = []
+    def add_id(m):
+        text = re.sub('<.*?>', '', m.group(1))
+        i = slugify(text)[:60]
+        toc.append((i, text))
+        return f'<h2 id="{i}">{m.group(1)}</h2>'
+    body = re.sub(r'<h2>(.*?)</h2>', add_id, body)
+    words = len(re.sub('<.*?>', ' ', body).split())
+    mins = max(1, round(words / 220))
+    img = meta.get('image') or 'img/cover.jpg'
+    url = f'{BASE}/{meta["slug"]}.html'
+    date = datetime.date.fromisoformat(meta['date'])
+    toc_html = ''
+    if len(toc) >= 3:
+        toc_html = '<nav class="toc"><b>In this article</b><ol>' + ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc) + '</ol></nav>'
+    hero = f'<img class="pinimg" src="{meta["image"]}" alt="{html.escape(meta["title"])}">' if meta.get('image') else ''
+    pin = ('https://www.pinterest.com/pin/create/button/?' +
+           urllib.parse.urlencode({'url': url, 'media': f'{BASE}/{img}', 'description': meta['title']}))
+    others = [a for a in registry if a['slug'] != meta['slug']][:3]
+    related = ''
+    if others:
+        related = '<section class="related"><h2>Keep reading</h2><div class="cards">' + ''.join(card(a) for a in others) + '</div></section>'
+    schema = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": meta['title'],
+                         "description": meta['description'], "datePublished": meta['date'],
+                         "author": {"@type": "Person", "name": AUTHOR}, "image": f'{BASE}/{img}',
+                         "mainEntityOfPage": url, "keywords": meta.get('keywords', '')}, ensure_ascii=False)
+    main = f'''<article class="wrap art">
+<div class="kick">{html.escape(meta.get("kicker", "ISLAMIC PARENTING"))}</div>
+<h1>{html.escape(meta["title"])}</h1>
+<p class="byline">By {AUTHOR} · {date.strftime("%B %-d, %Y")} · {mins} min read <a class="pinit" href="{html.escape(pin)}" target="_blank" rel="noopener">Save to Pinterest</a></p>
+{hero}{toc_html}
+{body}
+<div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>Want the full guide?</b><p>This article draws on <i>Hearts Before Habits</i> — a complete Islamic parenting guide with scripts, du'as, printables and a 30-day plan.</p><a class="btn" href="book.html">See the book</a> <a class="btn ghost" href="printables.html">Free printables</a></div></div>
+{related}
+</article>
+<script type="application/ld+json">{schema}</script>'''
+    head, foot = shell()
+    page = set_meta(head, meta['title'], meta['description'], img, url) + '<main>' + main + '</main>' + foot
+    open(f'{meta["slug"]}.html', 'w', encoding='utf-8').write(page)
+    return words
+
+def card(a):
+    img = f'<img src="{a["image"]}" alt="">' if a.get('image') else '<div class="ph">☾</div>'
+    return f'<a class="card" href="{a["slug"]}.html">{img}<div><h3>{html.escape(a["title"])}</h3><p>{html.escape(a["description"])}</p></div></a>'
+
+def replace_cards(fname, items):
+    s = open(fname, encoding='utf-8').read()
+    new = '<!--CARDS--><div class="cards">' + ''.join(card(a) for a in items) + '</div><!--/CARDS-->'
+    if '<!--CARDS-->' in s:
+        s = re.sub(r'<!--CARDS-->.*?<!--/CARDS-->', lambda m: new, s, flags=re.S)
+    else:  # first run: wrap the existing first cards block
+        s = re.sub(r'<div class="cards">.*?</a></div>', lambda m: new, s, count=1, flags=re.S)
+    open(fname, 'w', encoding='utf-8').write(s)
+
+def main():
+    registry = json.load(open('articles.json', encoding='utf-8')) if os.path.exists('articles.json') else []
+    by_slug = {a['slug']: a for a in registry}
+    posts = sorted(glob.glob('posts/*.md'))
+    metas = []
+    for p in posts:
+        meta, body = read_post(p)
+        by_slug[meta['slug']] = {k: meta[k] for k in ('slug', 'title', 'description', 'date') } | ({'image': meta['image']} if meta.get('image') else {})
+        metas.append((meta, body))
+    registry = sorted(by_slug.values(), key=lambda a: a['date'], reverse=True)
+    for meta, body in metas:
+        w = build_post(meta, body, registry)
+        print(f'built {meta["slug"]}.html — {w} words')
+    json.dump(registry, open('articles.json', 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
+    replace_cards('index.html', registry[:3])
+    replace_cards('articles.html', registry)
+    pages = ['', 'book.html', 'articles.html', 'printables.html', 'about.html'] + [a['slug'] + '.html' for a in registry]
+    today = datetime.date.today().isoformat()
+    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
+         ''.join(f'  <url><loc>{BASE}/{p}</loc><lastmod>{today}</lastmod></url>\n' for p in pages) + '</urlset>\n'
+    open('sitemap.xml', 'w').write(sm)
+    open('robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
+    print(f'{len(registry)} articles in registry; cards, sitemap.xml, robots.txt updated')
+
+if __name__ == '__main__':
+    main()

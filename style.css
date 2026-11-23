@@ -82,3 +82,17 @@ footer{background:#efe3d4;margin-top:60px;padding:34px 0;font-size:15px}
 .js .reveal.in{opacity:1;transform:none}
 .card.reveal.in:hover{transform:translateY(-4px)}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.petals{display:none}}
+
+/* ---------- blog articles ---------- */
+.byline{color:#7a6a5a;font-size:15px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pinit{background:#E60023;color:#fff!important;text-decoration:none;font-weight:900;font-size:13px;padding:5px 12px;border-radius:20px}
+.toc{background:#fff;border:2px solid var(--blush);border-radius:16px;padding:18px 24px;margin:24px 0}
+.toc b{font-family:'Playfair Display',serif;font-size:19px}.toc ol{margin:.5em 0 0;padding-left:22px}.toc li{margin:4px 0}
+.art h3{color:var(--sage);margin-top:1.2em}
+.art ul li,.art ol li{margin-bottom:6px}
+.art table{width:100%;border-collapse:collapse;margin:20px 0;font-size:16px}
+.art th{background:var(--teal);color:#fff;text-align:left;padding:10px}.art td{padding:10px;border-bottom:1px solid #eadfcf}
+.art tr:nth-child(even) td{background:#f4efe6}
+.tip{background:#FBF3DE;border-left:6px solid var(--mustard);padding:14px 20px;border-radius:8px;margin:20px 0}
+.related{margin-top:50px}.related h2{color:var(--brown)}
+.related .cards{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
