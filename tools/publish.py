@@ -82,7 +82,27 @@ def build_post(meta, body_md, registry):
     hero = f'<img class="pinimg" src="{meta["image"]}" alt="{html.escape(meta["title"])}">' if meta.get('image') else ''
     pin = ('https://www.pinterest.com/pin/create/button/?' +
            urllib.parse.urlencode({'url': url, 'media': f'{BASE}/{img}', 'description': meta['title']}))
-    others = [a for a in registry if a['slug'] != meta['slug']][:3]
+    me = next((a for a in registry if a['slug'] == meta['slug']), {})
+    pillar_slug = meta.get('pillar') if meta.get('type') != 'pillar' else None
+    by = {a['slug']: a for a in registry}
+    # related: same-pillar siblings first (and the pillar itself), then newest others
+    fam = []
+    if pillar_slug:
+        fam = [by[pillar_slug]] if pillar_slug in by else []
+        fam += [a for a in registry if a.get('pillar') == pillar_slug and a['slug'] != meta['slug']]
+    elif meta.get('type') == 'pillar':
+        fam = [a for a in registry if a.get('pillar') == meta['slug']]
+    rest = [a for a in registry if a['slug'] != meta['slug'] and a not in fam]
+    others = (fam + rest)[:3]
+    top_box = ''
+    if pillar_slug and pillar_slug in by:
+        pa = by[pillar_slug]
+        top_box = f'<p class="guidebox">Part of the guide: <a href="{pa["slug"]}.html">{html.escape(pa["title"])}</a></p>'
+    hub = ''
+    if meta.get('type') == 'pillar':
+        kids = [a for a in registry if a.get('pillar') == meta['slug']]
+        if kids:
+            hub = '<section class="hub"><h2>More in this guide</h2><ul>' + ''.join(f'<li><a href="{a["slug"]}.html"><b>{html.escape(a["title"])}</b></a><br><span>{html.escape(a["description"])}</span></li>' for a in kids) + '</ul></section>'
     related = ''
     if others:
         related = '<section class="related"><h2>Keep reading</h2><div class="cards">' + ''.join(card(a) for a in others) + '</div></section>'
@@ -92,10 +112,11 @@ def build_post(meta, body_md, registry):
                          "mainEntityOfPage": url, "keywords": meta.get('keywords', '')}, ensure_ascii=False)
     main = f'''<article class="wrap art">
 <div class="kick">{html.escape(meta.get("kicker", "ISLAMIC PARENTING"))}</div>
-<h1>{html.escape(meta["title"])}</h1>
+{top_box}<h1>{html.escape(meta["title"])}</h1>
 <p class="byline">By {AUTHOR} · {date.strftime("%B %-d, %Y")} · {mins} min read <a class="pinit" href="{html.escape(pin)}" target="_blank" rel="noopener">Save to Pinterest</a></p>
 {hero}{toc_html}
 {body}
+{hub}
 <div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>Want the full guide?</b><p>This article draws on <i>Hearts Before Habits</i> — a complete Islamic parenting guide with scripts, du'as, printables and a 30-day plan.</p><a class="btn" href="book.html">See the book</a> <a class="btn ghost" href="printables.html">Free printables</a></div></div>
 {related}
 </article>
@@ -125,7 +146,7 @@ def main():
     metas = []
     for p in posts:
         meta, body = read_post(p)
-        by_slug[meta['slug']] = {k: meta[k] for k in ('slug', 'title', 'description', 'date') } | ({'image': meta['image']} if meta.get('image') else {})
+        by_slug[meta['slug']] = {k: meta[k] for k in ('slug', 'title', 'description', 'date') } | ({'image': meta['image']} if meta.get('image') else {}) | ({'type': meta['type']} if meta.get('type') else {}) | ({'pillar': meta['pillar']} if meta.get('pillar') else {})
         metas.append((meta, body))
     registry = sorted(by_slug.values(), key=lambda a: a['date'], reverse=True)
     for meta, body in metas:

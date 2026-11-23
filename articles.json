@@ -1,28 +1,110 @@
 [
   {
-    "slug": "teaching-salah-by-age",
-    "title": "Teaching Salah by Age: A Gentle, No-Yelling Roadmap",
-    "description": "How to teach children salah with love at every age — observe, invite, teach and expect — following the Prophetic timeline.",
+    "slug": "daily-duas-for-kids",
+    "title": "Daily Duas for Kids: 12 Easy Duas Every Muslim Child Can Learn",
+    "description": "Daily duas for kids — 12 short, authentic supplications for eating, sleeping, leaving home and more, with meanings and simple ways to teach them.",
     "date": "2026-11-23",
-    "image": "img/pin-salah.jpg"
+    "type": "cluster",
+    "pillar": "islamic-parenting-guide"
+  },
+  {
+    "slug": "gentle-parenting-in-islam",
+    "title": "Gentle Parenting in Islam: The Complete Guide for Muslim Moms",
+    "description": "Gentle parenting in Islam explained — what the Quran and Sunnah teach about mercy, boundaries and discipline, with real scripts for everyday moments.",
+    "date": "2026-11-23",
+    "type": "pillar"
+  },
+  {
+    "slug": "get-kids-up-for-fajr",
+    "title": "How to Get Kids Up for Fajr Without a Fight",
+    "description": "How to get kids up for Fajr gently — sleep tips, a calm wake-up routine, the Sunnah's example and scripts by age, so mornings stop being a battle.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "teaching-salah-by-age"
+  },
+  {
+    "slug": "how-to-discipline-a-child-in-islam",
+    "title": "How to Discipline a Child in Islam: Gentle, Firm and Fair",
+    "description": "How to discipline a child in Islam without hitting or shaming — the Prophet's example, clear boundaries, fair consequences and scripts by age for Muslim moms.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "gentle-parenting-in-islam"
+  },
+  {
+    "slug": "islamic-parenting-guide",
+    "title": "Islamic Parenting: The Complete Guide for Muslim Moms",
+    "description": "Islamic parenting explained simply — the Quran and Sunnah foundations, daily habits, discipline, faith and character, with real scripts for Muslim moms.",
+    "date": "2026-11-23",
+    "type": "pillar"
+  },
+  {
+    "slug": "muslim-mom-burnout",
+    "title": "Muslim Mom Burnout: 9 Gentle Ways to Rest and Recover",
+    "description": "Muslim mom burnout is real. Learn the signs, what Islam says about rest and limits, and 9 gentle, practical ways to recover without guilt.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "islamic-parenting-guide"
+  },
+  {
+    "slug": "teach-kids-about-allah",
+    "title": "How to Teach Kids About Allah: Love First, Always",
+    "description": "How to teach kids about Allah with love, not fear — simple words by age, stories, Allah's names, answers to hard questions and everyday habits for Muslim moms.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "islamic-parenting-guide"
+  },
+  {
+    "slug": "teach-kids-to-fast-ramadan",
+    "title": "How to Teach Kids to Fast in Ramadan (Gently, by Age)",
+    "description": "How to teach kids to fast in Ramadan gradually — signs of readiness, practice fasts by age, suhoor and iftar tips, safety and what the Sunnah says.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "ramadan-with-kids"
+  },
+  {
+    "slug": "teach-quran-to-kids-at-home",
+    "title": "How to Teach Quran to Kids at Home: A Gentle Guide",
+    "description": "How to teach Quran to kids at home — a simple daily routine, ideas by age, memorisation tips and what the Sunnah says, for busy Muslim moms.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "teaching-salah-by-age"
+  },
+  {
+    "slug": "toddler-tantrums-islamic-parenting",
+    "title": "Toddler Tantrums: A Gentle Islamic Approach for Muslim Moms",
+    "description": "Toddler tantrums in Islam — why they happen, what the Sunnah teaches about patience and mercy, and a calm step-by-step plan with scripts for ages 1–4.",
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "gentle-parenting-in-islam"
+  },
+  {
+    "slug": "teaching-salah-by-age",
+    "title": "How to Teach Kids Salah: A Complete Guide by Age",
+    "description": "How to teach kids salah the gentle way — what to do from toddler to teen, the Sunnah behind it, real scripts and a simple routine you can start tonight.",
+    "date": "2026-11-23",
+    "type": "pillar"
   },
   {
     "slug": "ramadan-with-kids",
-    "title": "Ramadan with Kids: 7 Gentle Traditions",
-    "description": "Seven simple Ramadan traditions that help Muslim children love the holy month — from cozy suhoor to a family good-deeds jar.",
-    "date": "2026-11-23"
+    "title": "Ramadan with Kids: The Complete Guide for Muslim Moms",
+    "description": "Ramadan with kids made joyful — how to prepare, what to do by age, simple traditions, fasting tips and a month-long plan for a calm, meaningful Ramadan.",
+    "date": "2026-11-23",
+    "type": "pillar"
   },
   {
     "slug": "phrases-every-child-needs-to-hear",
-    "title": "10 Phrases Every Child Needs to Hear",
-    "description": "Ten simple, loving phrases that build a child's confidence and connection — inspired by the Prophetic way of speaking to children.",
+    "title": "10 Phrases Every Child Needs to Hear (Muslim Mom Edition)",
+    "description": "10 phrases every child needs to hear from their Muslim mother — words of love, safety and encouragement, with Sunnah examples and when to say them.",
     "date": "2026-11-23",
-    "image": "img/pin-phrases.jpg"
+    "type": "cluster",
+    "pillar": "islamic-parenting-guide"
   },
   {
     "slug": "how-to-stop-yelling-at-your-kids",
     "title": "How to Stop Yelling at Your Kids: 7 Sunnah Steps",
     "description": "How to stop yelling at your kids, the Prophetic way — 7 Sunnah steps to calm down before you correct, with real scripts for tired Muslim moms.",
-    "date": "2026-11-23"
+    "date": "2026-11-23",
+    "type": "cluster",
+    "pillar": "gentle-parenting-in-islam"
   }
 ]

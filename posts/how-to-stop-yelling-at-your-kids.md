@@ -3,6 +3,8 @@ title: How to Stop Yelling at Your Kids: 7 Sunnah Steps
 description: How to stop yelling at your kids, the Prophetic way — 7 Sunnah steps to calm down before you correct, with real scripts for tired Muslim moms.
 date: 2026-11-23
 kicker: GENTLE MUSLIM PARENTING
+type: cluster
+pillar: gentle-parenting-in-islam
 keywords: how to stop yelling at your kids, anger in Islam, Islamic parenting, gentle Muslim parenting, Sunnah anger management, calm parenting
 ---
 
@@ -123,4 +125,4 @@ Your calm voice can do the same for your children.
 
 If you'd like more help, the book [Hearts Before Habits](book.html) has a full chapter on managing your anger as a parent, plus a personal anger plan and ready-to-use scripts. And for a gentle daily routine your whole family can follow, grab the free [Salah tracker and good-deeds checklist](printables.html).
 
-You can also read [10 Phrases Every Child Needs to Hear](phrases-every-child-needs-to-hear.html) and [Teaching Salah by Age](teaching-salah-by-age.html) next — both are built on the same idea: connection first, correction second.
+This article is part of our guide [Gentle Parenting in Islam](gentle-parenting-in-islam.html). Read [How to Discipline a Child in Islam](how-to-discipline-a-child-in-islam.html) and [10 Phrases Every Child Needs to Hear](phrases-every-child-needs-to-hear.html) next — both are built on the same idea: connection first, correction second.
