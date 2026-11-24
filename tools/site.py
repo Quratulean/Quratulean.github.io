@@ -24,6 +24,8 @@ FOOTER = f'''<footer><div class="wrap"><div class="fl"><img src="img/logo-v2.jpg
 
 def site_head():
     parts = []
+    if CFG.get('google_verify'):
+        parts.append(f'<meta name="google-site-verification" content="{CFG["google_verify"]}" />')
     if CFG.get('adsense_client'):
         c = CFG['adsense_client']
         parts.append(f'<meta name="google-adsense-account" content="{c}">\n'
