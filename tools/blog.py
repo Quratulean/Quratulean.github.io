@@ -79,7 +79,7 @@ def sidebar():
     popular = [a for a in REG if a.get('type') == 'pillar'][:4]
     pop = ''.join(f'<li><a href="{a["slug"]}.html">{html.escape(a["title"])}</a></li>' for a in popular)
     return f'''<aside class="side">
-<div class="box author"><img src="img/logo-v2.jpg" alt="Islamic Parenting 101 logo" width="96" height="96" loading="lazy"><b>Assalamu alaykum, I'm Tabasum</b>
+<div class="box author"><img src="img/tabasum.jpg" alt="Illustration of a mother reading to her child" width="110" height="110" loading="lazy"><b>Assalamu alaykum, I'm Tabasum</b>
 <p>I write gentle, Sunnah-rooted help for Muslim moms — less yelling, more connection, and children whose good habits grow from a loving heart.</p><a href="about.html">More about me →</a></div>
 <div class="box gift"><span class="chip">Free gift</span><b>Calm Mama Starter Kit</b><p>4 printable cards for calmer days: phrases, Sunnah calm-down steps, a bedtime routine and a planner.</p><a class="btn" href="free-starter-kit.html">Get it free</a></div>
 <div class="box"><span class="chip">New</span><a href="ramadan-planner.html"><img src="img/shop/ramadan-planner.jpg" alt="Ramadan Family Planner" width="1200" height="800" loading="lazy"></a><b>Ramadan Family Planner &amp; Kids Pack</b><p>19 printable pages to plan a calm, joyful Ramadan.</p><a href="ramadan-planner.html">See inside →</a></div>
@@ -149,7 +149,7 @@ page('index.html', 'Islamic Parenting 101 — Gentle Islamic Parenting for Musli
 <a class="prod" href="book.html"><div class="bookimg"><img src="img/cover.jpg" alt="Hearts Before Habits book cover" loading="lazy"></div><div><span class="chip">Book · Coming to Amazon</span><b>Hearts Before Habits</b><p>The complete guide to the 4 C's, with scripts for hard moments, du'as for your children and a 30-day plan.</p><span class="more">About the book →</span></div></a>
 </div></section>
 
-<section class="wrap hsec"><div class="aboutrow"><img src="img/logo-v2.jpg" alt="Islamic Parenting 101 logo" width="160" height="160" loading="lazy">
+<section class="wrap hsec"><div class="aboutrow"><img src="img/tabasum.jpg" alt="Illustration of a mother in hijab reading to her child" width="200" height="200" loading="lazy">
 <div><div class="kick">ASSALAMU ALAYKUM</div><h2>I'm Tabasum, and I'm so glad you're here.</h2>
 <p>I write for Muslim mothers who love their children deeply and want to raise them close to Allah, without the yelling, guilt and power struggles. Everything here is rooted in the Quran and the example of the Prophet ﷺ, and written to be used tonight, not someday.</p>
 <p><a href="about.html">Read my story →</a></p></div></div></section>

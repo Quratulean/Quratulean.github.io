@@ -128,7 +128,7 @@ def build_post(meta, body_md, registry):
              f'<a href="https://wa.me/?text={enc(meta["title"] + " " + url)}" target="_blank" rel="noopener">WhatsApp</a>'
              f'<a href="https://www.facebook.com/sharer/sharer.php?u={enc(url)}" target="_blank" rel="noopener">Facebook</a>'
              f'<a href="mailto:?subject={enc(meta["title"])}&amp;body={enc(url)}">Email</a></div>')
-    authorbox = ('<div class="authorbox"><img src="img/logo-v2.jpg" alt="" width="80" height="80" loading="lazy"><div><b>Written by Tabasum Majeed</b>'
+    authorbox = ('<div class="authorbox"><img src="img/tabasum.jpg" alt="" width="80" height="80" loading="lazy"><div><b>Written by Tabasum Majeed</b>'
                  '<p>Author of <i>Hearts Before Habits</i>. I share gentle, Sunnah-rooted help for Muslim moms — heart first, habit second. '
                  '<a href="about.html">About me</a> · <a href="articles.html">More posts</a></p></div></div>')
     main = f'''<article class="wrap art">
