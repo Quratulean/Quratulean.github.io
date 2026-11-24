@@ -1,0 +1,7 @@
+{
+  "_help": "Fill these in once each account is approved, then run: python3 tools/site.py. Empty value = feature stays off.",
+  "adsense_client": "",
+  "amazon_tag": "",
+  "ga4_id": "",
+  "shop_url": ""
+}

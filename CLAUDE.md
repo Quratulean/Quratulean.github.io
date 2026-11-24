@@ -8,11 +8,14 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - `pinterest-project-manager` — status, weekly report, pin pipeline, posting to Pinterest.
 - `pinterest-viral-pins` — design pins (render.js / animate.js).
 - `islamic-parenting-design` — design any non-pin visual (printables, trackers, worksheets, badges, certificates, infographics, email headers, social graphics, logo variants), using the published "Islamic Parenting 101" design system. Templates in its `templates/`.
+- `islamic-parenting-seo` — keyword research, on-page audit (one-command checker inside), technical SEO, domain move steps, Pinterest SEO, AdSense/affiliate readiness.
 
 ## Site system
 - Articles live in `posts/<slug>.md` (front matter: title, description, date, kicker, type: pillar|cluster, pillar: <slug>, keywords).
 - Images: `python3 tools/featured.py [slug]` draws each article's featured image (`img/articles/<slug>.jpg`, 1200x800, used on cards, article top and og:image) and a tall Pinterest version (`pins/<slug>.jpg`, 1000x1500, used by "Save to Pinterest"). New article → add its headline + icon to `ART` in that script, run it, then publish.py. Needs `pip install markdown` and Playwright.
-- Build: `python3 tools/publish.py` (pages, sitemap, robots, articles.json) and `python3 tools/pages.py` (free-starter-kit, thank-you, contact). Then commit + push to `main`.
+- Build (always this order): `python3 tools/publish.py` (articles, sitemap, robots, articles.json) → `python3 tools/pages.py` (free-starter-kit, thank-you, contact) → `python3 tools/site.py` (privacy, disclaimer, terms, resources = Amazon affiliate page, 404, shared footer, AdSense/GA head block, ads.txt). Then commit + push to `main`.
+- Money switches live in `tools/site.json`: `adsense_client` (ca-pub-…), `amazon_tag` (Associates id), `ga4_id`, `shop_url`. Empty = off. Fill in when the owner's accounts are approved, rebuild, push.
+- Own domain: the scripts read `CNAME`. Only add `CNAME` after DNS points to GitHub Pages (steps in the SEO skill).
 - Voice: "The Wise Older Sister"; tagline *Heart first. Habit second.* Only well-attributed Quran/hadith; contested fiqh/aqidah neutral; "ask a qualified scholar".
 - 14 articles live (4 pillars + 10 clusters). 12 are ~1,000–1,300 words and still need expanding to ~2,000 (same slugs). Status table: `docs/blog-content-plan.md`.
 

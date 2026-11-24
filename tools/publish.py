@@ -123,7 +123,7 @@ def build_post(meta, body_md, registry):
 {body}
 {hub}
 {signup}
-<div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>Want the full guide?</b><p>This article draws on <i>Hearts Before Habits</i> — a complete Islamic parenting guide with scripts, du'as, printables and a 30-day plan.</p><a class="btn" href="book.html">See the book</a> <a class="btn ghost" href="printables.html">Free printables</a></div></div>
+<div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>Want the full guide?</b><p>This article draws on <i>Hearts Before Habits</i> — a complete Islamic parenting guide with scripts, du'as, printables and a 30-day plan.</p><a class="btn" href="book.html">See the book</a> <a class="btn ghost" href="printables.html">Free printables</a> <a class="btn ghost" href="resources.html">Recommended books</a></div></div>
 {related}
 </article>
 <script type="application/ld+json">{schema}</script>'''

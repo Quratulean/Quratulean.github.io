@@ -139,3 +139,9 @@ footer{background:#efe3d4;margin-top:60px;padding:34px 0;font-size:15px}
 .toc ol{padding-left:24px}.toc li{padding-left:4px}
 .toc a{color:var(--brown);text-decoration:none;border-bottom:1px dotted var(--terra)}.toc a:hover{color:var(--terra)}
 @media (max-width:480px){.feature{margin:16px -8px 22px}.feature img{border-radius:16px}.filters button{padding:7px 14px;font-size:14px}}
+/* recommended resources + legal links */
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:0 0 34px}
+.rec{display:flex;flex-direction:column;gap:6px;background:#fff;border-radius:18px;padding:18px 20px;text-decoration:none;color:var(--brown);box-shadow:0 5px 0 #eadfcf;transition:transform .2s,box-shadow .2s}
+.rec:hover{transform:translateY(-3px);box-shadow:0 12px 26px #3b2a2022}
+.rec b{font-family:'Playfair Display',serif;font-size:19px}.rec span{font-size:15px;color:#5a4a3e}.rec em{font-style:normal;font-weight:700;color:var(--terra);font-size:15px;margin-top:auto}
+footer .legal a{color:inherit}
