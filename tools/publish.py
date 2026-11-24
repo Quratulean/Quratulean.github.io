@@ -138,6 +138,7 @@ def build_post(meta, body_md, registry):
 {hero}{toc_html}
 {body}
 {share}
+<p class="postnote">This article shares general guidance from the Quran and Sunnah for parents. It is not a religious ruling, or medical or psychological advice. For fiqh questions please ask a qualified scholar, and for health or development concerns please speak to a professional. <a href="disclaimer.html">Disclaimer</a></p>
 {authorbox}
 {hub}
 {promo}

@@ -188,3 +188,4 @@ header.open .menubtn span:nth-child(1){transform:translateY(7px) rotate(45deg)}h
 .giftpop .x{position:absolute;right:10px;top:6px;border:0;background:none;font-size:26px;cursor:pointer;color:#7a6a5d}
 @media (max-width:600px){.giftpop{left:12px;right:12px;bottom:12px;max-width:none}.totop{bottom:90px}}
 @media (prefers-reduced-motion:reduce){.giftpop,.totop{transition:none}}
+.postnote{font-size:14px;color:#7a6a5d;background:#fff8ef;border-left:4px solid var(--mustard);padding:10px 14px;border-radius:8px;margin:6px 0 18px}

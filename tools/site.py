@@ -18,7 +18,7 @@ UPDATED = 'November 24, 2026'
 
 FOOTER = f'''<footer><div class="wrap"><div class="fl"><img src="img/logo-v2.jpg" alt="" width="64" height="64"><div><b>Islamic Parenting 101</b><br>Nurturing children's hearts before shaping their habits.</div></div>
 <div class="fr"><a href="{PIN}" target="_blank" rel="noopener">Follow on Pinterest</a> · <a href="book.html">Hearts Before Habits</a> · <a href="printables.html">Free printables</a> · <a href="free-starter-kit.html">Free gift</a> · <a href="ramadan-planner.html">Ramadan Planner</a> · <a href="resources.html">Recommended</a> · <a href="contact.html">Contact</a></div>
-<p class="sm legal"><a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer &amp; Affiliate Disclosure</a> · <a href="terms.html">Terms of Use</a></p>
+<p class="sm legal"><a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer &amp; Affiliate Disclosure</a> · <a href="terms.html">Terms of Use</a> · <a href="refund-policy.html">Refund Policy</a></p>
 <p class="sm">© 2026 Tabasum Majeed · Islamic Parenting 101. This site shares general educational and spiritual guidance; it is not a substitute for professional or scholarly advice. As an Amazon Associate I earn from qualifying purchases.</p></div></footer>'''
 
 
@@ -74,13 +74,15 @@ page('privacy.html', 'Privacy Policy', 'How Islamic Parenting 101 collects, uses
 <p>Islamic Parenting 101 ({html.escape(DOMAIN)}) is run by Tabasum Majeed. This policy explains what information is collected when you visit, and how it is used. If you have questions, please use the <a href="contact.html">contact page</a>.</p>
 <h2>Information you give us</h2>
 <ul><li><b>Email sign-up.</b> When you request the free Calm Mama Starter Kit, your name (optional) and email address are stored by our email provider, <b>MailerLite</b>, so we can send you the kit and occasional emails. Every email has an unsubscribe link.</li>
-<li><b>Contact form.</b> Messages sent through the contact form are delivered by <b>Formspree</b> and used only to reply to you.</li></ul>
+<li><b>Contact form.</b> Messages sent through the contact form are delivered by <b>Formspree</b> and used only to reply to you.</li>
+<li><b>Purchases.</b> When you buy a printable, the order is handled by our shop provider (<b>Payhip</b>) and its payment processors (such as Stripe or PayPal). They receive your name, email and payment details to complete the order and deliver your download. We see your name, email and what you bought, never your full card details.</li></ul>
 <h2>Information collected automatically</h2>
 <p>Like most websites, our host and the services below may receive basic technical information (such as your IP address, browser type and the pages you visit) and may use cookies or similar technologies.</p>
 <ul><li><b>Advertising (Google AdSense).</b> We may show ads served by Google. Google and its partners use cookies to serve ads based on your visits to this and other websites. You can opt out of personalised advertising at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a>. Learn how Google uses data at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>.</li>
 <li><b>Analytics.</b> We may use Google Analytics to understand which articles are helpful. It collects anonymous usage statistics using cookies.</li>
 <li><b>Affiliate links.</b> Some links go to Amazon. If you click one, Amazon may set a cookie to credit the referral. See our <a href="disclaimer.html">Disclaimer &amp; Affiliate Disclosure</a>.</li>
-<li><b>Embedded services.</b> Pages load fonts from Google Fonts and may include Pinterest "Save" buttons and MailerLite forms, which may receive your IP address.</li></ul>
+<li><b>Embedded services.</b> Pages load fonts from Google Fonts and may include Pinterest "Save" buttons and MailerLite forms, which may receive your IP address.</li>
+<li><b>On your device.</b> The site remembers on your own browser if you closed the free-gift box, so it does not show again. This stays on your device and is not sent to us.</li></ul>
 <h2>How we use information</h2><p>To send the emails you asked for, reply to messages, improve the site, and keep it free through ads and affiliate links. We never sell your personal information.</p>
 <h2>Your choices and rights</h2><p>You can unsubscribe from emails at any time, block or delete cookies in your browser, and ask us to access, correct or delete your personal information by writing through the <a href="contact.html">contact page</a>. Depending on where you live (for example the EU/UK under GDPR, or California under CCPA/CPRA), you may have additional rights, which we will honour.</p>
 <h2>Children</h2><p>This website is written for parents. It is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
@@ -91,12 +93,14 @@ page('disclaimer.html', 'Disclaimer & Affiliate Disclosure', 'Disclaimer and aff
 <h2>General and religious guidance</h2><p>Articles on this site share general educational and spiritual guidance for parents. They are not medical, psychological or legal advice, and they are not religious rulings (fatwa). For questions of fiqh, please ask a qualified scholar; for health, development or safety concerns, please speak to a qualified professional. Quran and hadith are quoted with their sources so you can check them.</p>
 <h2>Affiliate disclosure</h2><p>Islamic Parenting 101 is a participant in the <b>Amazon Services LLC Associates Program</b>, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. <b>As an Amazon Associate I earn from qualifying purchases.</b> This costs you nothing extra. I only recommend things I believe are genuinely useful for Muslim families.</p>
 <h2>Advertising</h2><p>This site may show ads from Google AdSense. Ads are chosen by Google, not by us, and showing an ad is not an endorsement.</p>
-<h2>Our own products</h2><p>Links to <i>Hearts Before Habits</i> and any printables we sell are our own products.</p></section>''')
+<h2>Our own products</h2><p>Links to <i>Hearts Before Habits</i> and the printables we sell (such as the Ramadan Family Planner) are our own products. Purchases are handled by our shop provider; see the <a href="refund-policy.html">Refund Policy</a>.</p>
+<h2>No guaranteed results</h2><p>Every child and family is different. We share what has helped many families, but we cannot promise any particular result from following an article, printable or the book.</p></section>''')
 
 page('terms.html', 'Terms of Use', 'Terms of use for the Islamic Parenting 101 website and free printables.', f'''
 <section class="wrap art"><div class="kick">LEGAL</div><h1>Terms of Use</h1><p class="sm">Last updated: {UPDATED}</p>
 <p>By using this website you agree to these terms.</p>
 <h2>Content</h2><p>All articles, images and printables are © Tabasum Majeed / Islamic Parenting 101 unless stated otherwise. You are welcome to share links and to pin our images to Pinterest. Please do not copy full articles or resell printables.</p>
+<h2>Paid printables</h2><p>When you buy a printable you get a personal licence to print it as many times as you need for your own family, or for one classroom or masjid class. You may not resell it, share the file, or upload it anywhere else. Purchases are covered by our <a href="refund-policy.html">Refund Policy</a>.</p>
 <h2>Free printables</h2><p>Free printables are for personal, family, classroom and masjid-school use. They may not be sold, redistributed as files, or uploaded to other websites.</p>
 <h2>No guarantees</h2><p>We work hard to be accurate, but content is provided "as is" without warranties. See the <a href="disclaimer.html">Disclaimer</a>.</p>
 <h2>Links to other sites</h2><p>We are not responsible for the content or privacy practices of other websites we link to.</p>
@@ -139,6 +143,14 @@ page('resources.html', 'Recommended Islamic Books & Resources for Muslim Kids',
 {cards}
 <div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>And for you: Hearts Before Habits</b><p>A gentle Islamic parenting guide with scripts, du'as and a 30-day plan.</p><a class="btn" href="book.html">See the book</a></div></div></section>''', on=None)
 
+page('refund-policy.html', 'Refund Policy', 'Refund policy for printables bought from Islamic Parenting 101.', f'''
+<section class="wrap art"><div class="kick">LEGAL</div><h1>Refund Policy</h1><p class="sm">Last updated: {UPDATED}</p>
+<p>Our printables are digital downloads, delivered by email and as an instant download link right after you pay.</p>
+<h2>If something is wrong</h2><p>If a file will not open, prints badly, or is not what the product page described, write to us through the <a href="contact.html">contact page</a> within <b>14 days</b> of buying, with your order email. We will fix it or send a new file, and if we cannot, we will give you a full refund.</p>
+<h2>If you are not happy</h2><p>Because a download cannot be returned, we do not normally refund simply for a change of mind. But we would rather have a happy customer than keep your money: if you are genuinely disappointed, tell us within 14 days and we will look at it kindly.</p>
+<h2>How refunds are paid</h2><p>Refunds go back to the original payment method through our shop provider. It can take 5–10 working days for your bank or PayPal to show it.</p>
+<h2>Your legal rights</h2><p>This policy does not take away any rights you have under the consumer law of your country.</p></section>''')
+
 SHOP = CFG.get('shop_url', '')
 buy = (f'<a class="btn" href="{html.escape(SHOP)}" target="_blank" rel="noopener">Get the pack — $7</a>' if SHOP else
        '<a class="btn" href="free-starter-kit.html">Launching soon — join the list to hear first</a>')
@@ -162,7 +174,8 @@ page('ramadan-planner.html', 'Ramadan Family Planner & Kids Activity Pack (Print
 <h2>Good to know</h2><ul><li>Instant PDF download in <b>A4 and US Letter</b>. Print at home as many times as you need for your family.</li>
 <li>Made for ages 3–12 and their mamas. Ramadan and Eid dates are left blank for your local moon sighting.</li>
 <li>Quran and hadith are quoted with their sources. For fiqh questions (like when a child must fast), please ask a qualified scholar.</li>
-<li>Personal, family and single-classroom use. Please don't share the file.</li></ul>
+<li>Personal, family and single-classroom use. Please don't share the file.</li>
+<li>Something wrong with your files? See our <a href="refund-policy.html">Refund Policy</a>; we'll fix it or refund you.</li></ul>
 <p class="btns">{buy}</p>
 <p>Planning ahead? Read <a href="ramadan-with-kids.html">Ramadan with Kids: The Complete Guide</a> and <a href="teach-kids-to-fast-ramadan.html">How to Teach Kids to Fast</a>.</p></section>''', og='img/shop/ramadan-planner.jpg')
 
@@ -209,7 +222,7 @@ elif os.path.exists('ads.txt'):
 
 sm = open('sitemap.xml', encoding='utf-8').read()
 lastmod = re.search(r'<lastmod>(.*?)</lastmod>', sm).group(1)
-for p in ('ramadan-planner.html', 'resources.html', 'privacy.html', 'disclaimer.html', 'terms.html'):
+for p in ('ramadan-planner.html', 'refund-policy.html', 'resources.html', 'privacy.html', 'disclaimer.html', 'terms.html'):
     if f'/{p}</loc>' not in sm:
         sm = sm.replace('</urlset>', f'  <url><loc>{BASE}/{p}</loc><lastmod>{lastmod}</lastmod></url>\n</urlset>')
 open('sitemap.xml', 'w', encoding='utf-8').write(sm)
