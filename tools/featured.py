@@ -174,7 +174,7 @@ def page(slug, headline, kicker, ic, tint, tall):
 <div class="txt" style="left:80px;right:80px;top:930px;text-align:center">
 <div class="kick">{html.escape(kicker)}</div><h1 style="font-size:92px">{html.escape(headline)}</h1>
 <p class="tag">Heart first. Habit second.</p></div>
-<div class="foot">Read the full guide · quratulean.github.io</div>'''
+<div class="foot">Read the full guide · islamicparenting101.com</div>'''
     else:
         body = f'''<div class="blob" style="left:620px;top:80px;width:540px;height:540px"></div>
 <div class="art" style="left:645px;top:105px;width:490px;height:490px">{svg(ic)}</div>

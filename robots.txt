@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /gift/
 Disallow: /thank-you.html
-Sitemap: https://quratulean.github.io/sitemap.xml
+Sitemap: https://islamicparenting101.com/sitemap.xml

@@ -1,6 +1,6 @@
 # Islamic Parenting 101 — project handoff for Claude Code
 
-Owner: Tabasum Majeed. Goal: sell the book *Hearts Before Habits* (Islamic parenting, for Muslim mothers) and grow Pinterest (digitalallio428) + this blog (https://quratulean.github.io, GitHub Pages from `main`).
+Owner: Tabasum Majeed. Goal: sell the book *Hearts Before Habits* (Islamic parenting, for Muslim mothers) and grow Pinterest (digitalallio428) + this blog (https://islamicparenting101.com — custom domain since 2026-11-24 via `CNAME`; old https://quratulean.github.io redirects; GitHub Pages from `main`).
 Working rule from the owner: do everything online; don't pile files on her computer. Never enter her passwords; she handles sign-ups/verification clicks/CAPTCHAs.
 
 ## Skills (in .claude/skills/)
@@ -29,7 +29,7 @@ Working rule from the owner: do everything online; don't pile files on her compu
 
 ## Accounts
 - Pinterest digitalallio428 — **Business account**, display name "Islamic Parenting 101 | Hearts Before Habits", website quratulean.github.io **claimed** (p:domain_verify meta already inserted by tools/publish.py and tools/pages.py; content "7ef4da08a9bc8f1ef568d82c019d2f69"). Profile logo: `img/logo-v2.jpg` (the round H&H mark). 13 boards exist.
-- GitHub Quratulean/Quratulean.github.io; GoDaddy (no domain yet; plan islamicparenting101.com later); Canva connected.
+- GitHub Quratulean/Quratulean.github.io; GoDaddy: **islamicparenting101.com** registered 2026-11-24, expires 2027-11-24, auto-renew OFF (consider moving to Cloudflare Registrar before renewal), privacy on. DNS at GoDaddy: 4 A records @ → 185.199.108-111.153, CNAME www → quratulean.github.io (verified via dns.google); Canva connected.
 - Zapier Pinterest connection: "digitalallio428 #2" (selected_api PinterestCLIAPI) — used by the pinterest-project-manager skill to post pins via `create_pin`.
 - KDP: both formats submitted 2026-11-24, status "In review" (up to 72 h). Paperback $14.99 (8.5x11, standard color, 76 pp). Kindle $4.99 (70% royalty). Worldwide rights. No KDP Select. AI disclosure: texts "some sections, extensive editing"; cover one/few AI-generated images, minimal editing; tool "Claude"; translations none. Amazon buy link still MISSING until books go live.
 
@@ -45,10 +45,10 @@ Working rule from the owner: do everything online; don't pile files on her compu
 
 ## Paid product
 - **Ramadan Family Planner & Kids Activity Pack** (19 pages, A4 + Letter, $7). Source: `tools/ramadan_pack.py <out_dir>` then `node tools/render_pack.js <out_dir>`. The PDFs are the product: NEVER commit them to this public repo; the owner uploads them to the shop (Payhip planned). Sales page `ramadan-planner.html` (built by `tools/site.py`); its buy button uses `shop_url` in `tools/site.json` (empty = "launching soon" → free kit sign-up). Previews in `img/shop/`. Ramadan articles show a promo box (publish.py).
-- GoDaddy cart for islamicparenting101.com created 2026-11-24 ($9.39 incl. fees, expires 2026-11-25 15:26 UTC); owner pays.
 
 ## Open work
-0. Money goal: $500 by 31 Dec 2026 — plan and owner actions in `docs/money-plan-december.md`. Domain chosen: islamicparenting101.com (owner buys at GoDaddy; then DNS + CNAME per the SEO skill).
+0. Money goal: $500 by 31 Dec 2026 — plan and owner actions in `docs/money-plan-december.md`.
+0b. Domain follow-ups: owner ticks "Enforce HTTPS" in repo Settings → Pages once the certificate is ready; re-claim islamicparenting101.com on Pinterest (new p:domain_verify code needed — add it next to the old one in publish.py/pages.py); add the new domain to Google Search Console. The daily pin task still uses quratulean.github.io image/link URLs (they redirect).
 1. (Done) MailerLite sign-up works end to end. Optional: add a "check Promotions/Spam" note on thank-you + sign-up pages (tools/pages.py).
 2. Expand the 12 short articles to ~2,000 words.
 3. When KDP shows the Amazon link: update book.html (replace "Coming soon on Amazon"), welcome email 4, the book promo pin (`img/pin-book.jpg`, not yet posted), and append to CLAUDE.md.
