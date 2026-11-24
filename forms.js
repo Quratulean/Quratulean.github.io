@@ -24,4 +24,14 @@ window.SITE_FORMS = { signup: "mailerlite", mlAccount: "2818911", contact: "http
         .catch(function () { b.disabled = false; b.textContent = "Send message"; note(f, "Sorry, that did not send. Please try again.", false); });
     });
   });
+
+/* After a MailerLite sign-up succeeds, send the visitor straight to the thank-you page (which has the PDF download), so they never have to wait for email. */
+(function(){
+  if (!C.signup || /thank-you\.html/.test(location.pathname)) return;
+  var done = false;
+  function ok(){ var els = document.querySelectorAll(".ml-form-successBody, .row-success, .ml-form-successContent");
+    for (var i=0;i<els.length;i++){ var e=els[i]; if (e.offsetParent !== null && getComputedStyle(e).display !== "none" && (e.textContent||"").trim().length) return true; } return false; }
+  function go(){ if (done) return; done = true; setTimeout(function(){ location.href = "thank-you.html"; }, 1200); }
+  try { new MutationObserver(function(){ if (ok()) go(); }).observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:["style","class"]}); } catch(e){}
+})();
 })();
