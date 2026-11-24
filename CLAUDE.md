@@ -7,6 +7,7 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - `islamic-parenting-blog` — write/publish ~2,000-word SEO articles (read `docs/blog-content-plan.md` first).
 - `pinterest-project-manager` — status, weekly report, pin pipeline, posting to Pinterest.
 - `pinterest-viral-pins` — design pins (render.js / animate.js).
+- `islamic-parenting-design` — design any non-pin visual (printables, trackers, worksheets, badges, certificates, infographics, email headers, social graphics, logo variants), using the published "Islamic Parenting 101" design system. Templates in its `templates/`.
 
 ## Site system
 - Articles live in `posts/<slug>.md` (front matter: title, description, date, kicker, type: pillar|cluster, pillar: <slug>, keywords).
