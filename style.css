@@ -145,3 +145,30 @@ footer{background:#efe3d4;margin-top:60px;padding:34px 0;font-size:15px}
 .rec:hover{transform:translateY(-3px);box-shadow:0 12px 26px #3b2a2022}
 .rec b{font-family:'Playfair Display',serif;font-size:19px}.rec span{font-size:15px;color:#5a4a3e}.rec em{font-style:normal;font-weight:700;color:var(--terra);font-size:15px;margin-top:auto}
 footer .legal a{color:inherit}
+/* blog layout (2026-11) */
+.bloghead{padding:44px 0 18px;text-align:center}.bloghead h1{margin-bottom:.2em}.bloghead .lead{max-width:640px;margin:0 auto}
+.blog{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start;padding-bottom:40px}
+.sec{font-size:24px;margin:28px 0 14px;padding-bottom:8px;border-bottom:2px solid #eadfcf}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card.featured{display:grid;grid-template-columns:1.1fr 1fr}.card.featured img{height:auto;aspect-ratio:3/2;align-self:center}.card.featured h3{font-size:28px}
+.meta{display:block;margin-top:10px;font-size:14px;color:#7a6a5d;font-weight:700}
+.side{position:sticky;top:90px;display:flex;flex-direction:column;gap:18px}
+.box{background:#fff;border-radius:20px;padding:20px;box-shadow:0 5px 0 #eadfcf;font-size:16px}
+.box b{display:block;font-family:'Playfair Display',serif;font-size:19px;margin:6px 0}.box p{margin:.3em 0 .6em}.box img{border-radius:12px;margin:8px 0}
+.box.author{text-align:center}.box.author img{width:96px;height:96px;border-radius:50%;margin:0 auto}
+.box.gift{background:var(--blush)}.box .btn{display:inline-block}.box.book img{max-width:150px;margin:0 auto 6px}
+.topics,.pop{list-style:none;margin:0;padding:0}.topics li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0e6da}
+.topics span{background:var(--cream);border-radius:20px;padding:0 10px;font-size:14px;font-weight:700}.pop li{padding:7px 0;border-bottom:1px solid #f0e6da;line-height:1.35}
+.pinbtn{background:#E60023;width:100%;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tile{background:#fff;border-radius:18px;padding:18px 20px;text-decoration:none;color:var(--brown);box-shadow:0 5px 0 #eadfcf;transition:transform .2s}.tile:hover{transform:translateY(-3px)}
+.tile b{display:block;font-family:'Playfair Display',serif;font-size:20px;color:var(--terra)}.tile span{font-size:15px}
+.search input{width:100%;font:inherit;padding:14px 20px;border:2px solid #e2d3c0;border-radius:30px;background:#fff;margin:6px 0 14px}.search input:focus{outline:2px solid var(--terra);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.none{text-align:center}
+.share{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:34px 0 18px;padding-top:18px;border-top:2px solid #eadfcf}
+.share a{text-decoration:none;font-weight:700;font-size:15px;padding:7px 16px;border-radius:30px;background:#fff;border:2px solid #e2d3c0;color:var(--brown)}.share a:hover{border-color:var(--terra)}
+.authorbox{display:flex;gap:16px;align-items:center;background:#fff;border-radius:20px;padding:18px 20px;box-shadow:0 5px 0 #eadfcf;margin:10px 0 24px}
+.authorbox img{width:80px;height:80px;border-radius:50%;flex:0 0 80px}.authorbox p{margin:.2em 0 0;font-size:16px}
+@media (max-width:900px){.blog{grid-template-columns:1fr}.side{position:static}.card.featured{grid-template-columns:1fr}}
+@media (max-width:600px){.cards.two,.tiles{grid-template-columns:1fr}.card.featured h3{font-size:24px}}
+@media (max-width:800px){.book>*{min-width:0}.cover.big{max-width:min(260px,100%);margin:0 auto}}

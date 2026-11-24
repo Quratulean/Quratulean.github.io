@@ -32,6 +32,7 @@ def site_head():
         g = CFG['ga4_id']
         parts.append(f'<script async src="https://www.googletagmanager.com/gtag/js?id={g}"></script>\n'
                      f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{g}');</script>")
+    parts.append(f'<link rel="alternate" type="application/rss+xml" title="Islamic Parenting 101" href="{BASE}/feed.xml">')
     return '<!--SITEHEAD-->' + '\n'.join(parts) + '<!--/SITEHEAD-->'
 
 
@@ -171,9 +172,20 @@ page('404.html', 'Page not found', 'This page could not be found.', '''
 <p><a class="btn" href="articles.html">All articles</a> <a class="btn ghost" href="free-starter-kit.html">Free starter kit</a></p></section>''', noindex=True)
 
 # ---------- site-wide footer + head block
+NAV = [('index.html', 'Home'), ('articles.html', 'Blog'), ('ramadan-planner.html', 'Ramadan Planner'),
+       ('printables.html', 'Free Printables'), ('book.html', 'The Book'), ('about.html', 'About'), ('contact.html', 'Contact')]
+POSTS = {a['slug'] + '.html' for a in json.load(open('articles.json', encoding='utf-8'))}
+
+
+def nav_for(f):
+    cur = 'articles.html' if (f in POSTS or f.startswith('topic-')) else f
+    return '<nav>' + ''.join(f'<a href="{h}"{" class=on" if h == cur else ""}>{t}</a>' for h, t in NAV) + '</nav>'
+
+
 for f in sorted(glob.glob('*.html')):
     s = open(f, encoding='utf-8').read()
     s = re.sub(r'<footer>.*?</footer>', lambda m: FOOTER, s, count=1, flags=re.S)
+    s = re.sub(r'<nav>.*?</nav>', lambda m: nav_for(f), s, count=1, flags=re.S)
     s = re.sub(r'<!--SITEHEAD-->.*?<!--/SITEHEAD-->\n?', '', s, flags=re.S)
     s = s.replace('</head>', site_head() + '\n</head>', 1)
     if f == '404.html':  # served from any path, so links must be absolute

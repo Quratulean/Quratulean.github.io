@@ -116,12 +116,23 @@ def build_post(meta, body_md, registry):
                          "description": meta['description'], "datePublished": meta['date'],
                          "author": {"@type": "Person", "name": AUTHOR}, "image": f'{BASE}/{img}',
                          "mainEntityOfPage": url, "keywords": meta.get('keywords', '')}, ensure_ascii=False)
+    enc = urllib.parse.quote
+    share = (f'<div class="share"><b>Share this post</b>'
+             f'<a href="{html.escape(pin)}" target="_blank" rel="noopener">Pinterest</a>'
+             f'<a href="https://wa.me/?text={enc(meta["title"] + " " + url)}" target="_blank" rel="noopener">WhatsApp</a>'
+             f'<a href="https://www.facebook.com/sharer/sharer.php?u={enc(url)}" target="_blank" rel="noopener">Facebook</a>'
+             f'<a href="mailto:?subject={enc(meta["title"])}&amp;body={enc(url)}">Email</a></div>')
+    authorbox = ('<div class="authorbox"><img src="img/logo-v2.jpg" alt="" width="80" height="80" loading="lazy"><div><b>Written by Tabasum Majeed</b>'
+                 '<p>Author of <i>Hearts Before Habits</i>. I share gentle, Sunnah-rooted help for Muslim moms — heart first, habit second. '
+                 '<a href="about.html">About me</a> · <a href="articles.html">More posts</a></p></div></div>')
     main = f'''<article class="wrap art">
 <div class="kick">{html.escape(meta.get("kicker", "ISLAMIC PARENTING"))}</div>
 {top_box}<h1>{html.escape(meta["title"])}</h1>
 <p class="byline">By {AUTHOR} · {date.strftime("%B %-d, %Y")} · {mins} min read <a class="pinit" href="{html.escape(pin)}" target="_blank" rel="noopener">Save to Pinterest</a></p>
 {hero}{toc_html}
 {body}
+{share}
+{authorbox}
 {hub}
 {promo}
 {signup}
@@ -170,8 +181,7 @@ def main():
         w = build_post(meta, body, registry)
         print(f'built {meta["slug"]}.html — {w} words')
     json.dump(registry, open('articles.json', 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
-    replace_cards('index.html', registry[:3])
-    replace_cards('articles.html', registry)
+    # index.html, articles.html and topic pages are built by tools/blog.py
     pages = ['', 'book.html', 'articles.html', 'printables.html', 'free-starter-kit.html', 'contact.html', 'about.html'] + [a['slug'] + '.html' for a in registry]
     today = datetime.date.today().isoformat()
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \

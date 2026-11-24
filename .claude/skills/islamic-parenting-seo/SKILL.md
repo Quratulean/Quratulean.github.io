@@ -11,9 +11,9 @@ Read first: `CLAUDE.md` (repo root) and `docs/blog-content-plan.md` (pillars, cl
 
 ## How the site is built (so fixes go in the right place)
 - Articles: `posts/<slug>.md` front matter (`title`, `description`, `date`, `kicker`, `type: pillar|cluster`, `pillar`, `keywords`) → `python3 tools/publish.py` makes `<slug>.html`, Article JSON-LD, canonical, og tags, TOC, related links, sitemap.xml, robots.txt.
-- Form pages: `tools/pages.py`. Legal pages, resources (Amazon affiliate), 404, footer, AdSense/GA head block, ads.txt: `tools/site.py`, switched by `tools/site.json`.
+- Form pages: `tools/pages.py`. Blog home, Blog page, topic pages, RSS: `tools/blog.py`. Legal pages, resources (Amazon affiliate), 404, nav, footer, AdSense/GA head block, ads.txt: `tools/site.py`, switched by `tools/site.json`.
 - Always rebuild in this order, then commit and push to `main`:
-  `python3 tools/publish.py && python3 tools/pages.py && python3 tools/site.py`
+  `python3 tools/publish.py && python3 tools/pages.py && python3 tools/blog.py && python3 tools/site.py`
 - Never hand-edit generated HTML for something a script owns; change the script or the `.md`.
 
 ## 1. Keyword research (per topic)
