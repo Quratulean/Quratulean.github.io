@@ -17,7 +17,7 @@ PIN = 'https://www.pinterest.com/digitalallio428/'
 UPDATED = 'November 24, 2026'
 
 FOOTER = f'''<footer><div class="wrap"><div class="fl"><img src="img/logo.png" alt=""><div><b>Islamic Parenting 101</b><br>Nurturing children's hearts before shaping their habits.</div></div>
-<div class="fr"><a href="{PIN}" target="_blank" rel="noopener">Follow on Pinterest</a> · <a href="book.html">Hearts Before Habits</a> · <a href="printables.html">Free printables</a> · <a href="free-starter-kit.html">Free gift</a> · <a href="resources.html">Recommended</a> · <a href="contact.html">Contact</a></div>
+<div class="fr"><a href="{PIN}" target="_blank" rel="noopener">Follow on Pinterest</a> · <a href="book.html">Hearts Before Habits</a> · <a href="printables.html">Free printables</a> · <a href="free-starter-kit.html">Free gift</a> · <a href="ramadan-planner.html">Ramadan Planner</a> · <a href="resources.html">Recommended</a> · <a href="contact.html">Contact</a></div>
 <p class="sm legal"><a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer &amp; Affiliate Disclosure</a> · <a href="terms.html">Terms of Use</a></p>
 <p class="sm">© 2026 Tabasum Majeed · Islamic Parenting 101. This site shares general educational and spiritual guidance; it is not a substitute for professional or scholarly advice. As an Amazon Associate I earn from qualifying purchases.</p></div></footer>'''
 
@@ -42,7 +42,7 @@ def shell():
     return head, foot
 
 
-def page(fname, title, desc, body, noindex=False, on=None):
+def page(fname, title, desc, body, noindex=False, on=None, og=None):
     head, foot = shell()
     t, d = html.escape(title), html.escape(desc)
     head = re.sub(r'<title>.*?</title>', f'<title>{t} — Islamic Parenting 101</title>', head, flags=re.S)
@@ -50,6 +50,8 @@ def page(fname, title, desc, body, noindex=False, on=None):
     head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{t}">', head)
     head = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{d}">', head)
     head = re.sub(r'<link rel="canonical" href=".*?">\n?', '', head)
+    if og:
+        head = re.sub(r'<meta property="og:image" content=".*?">', f'<meta property="og:image" content="{BASE}/{og}">', head)
     head = re.sub(r' class=on', '', head)
     if on:
         head = head.replace(f'<a href="{on}">', f'<a href="{on}" class=on>', 1)
@@ -136,6 +138,33 @@ page('resources.html', 'Recommended Islamic Books & Resources for Muslim Kids',
 {cards}
 <div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>And for you: Hearts Before Habits</b><p>A gentle Islamic parenting guide with scripts, du'as and a 30-day plan.</p><a class="btn" href="book.html">See the book</a></div></div></section>''', on=None)
 
+SHOP = CFG.get('shop_url', '')
+buy = (f'<a class="btn" href="{html.escape(SHOP)}" target="_blank" rel="noopener">Get the pack — $7</a>' if SHOP else
+       '<a class="btn" href="free-starter-kit.html">Launching soon — join the list to hear first</a>')
+INSIDE = [('Family intentions & pre-Ramadan checklist', 'Start calm, two weeks before the first suhoor.'),
+          ('Family routine & suhoor/iftar planner', 'A simple rhythm for your days, with little-helper jobs for kids.'),
+          ('30 Days of Good Deeds', 'One small deed a day for the whole family to colour in.'),
+          ('My Fasting Stars & Ramadan Salah tracker', 'Gentle, by-age practice for children — no shaming.'),
+          ('Family Quran tracker & sadaqah jar', 'Colour a juz, colour a coin, decide together where it goes on Eid.'),
+          ("3 Ramadan du'as with Arabic, transliteration & sources", 'Including the du\'a for breaking the fast and for Laylat al-Qadr.'),
+          ('Last ten nights planner', 'A small, special plan for each night.'),
+          ('Kids pages', 'Word search with answers, colouring page, My Ramadan journal and a Ramadan Star award.')]
+page('ramadan-planner.html', 'Ramadan Family Planner & Kids Activity Pack (Printable)',
+     'A 19-page printable Ramadan planner for Muslim moms with kids activities: good-deeds calendar, fasting and salah trackers, Quran tracker, du\'as, word search and more. A4 and US Letter.', f'''
+<section class="wrap art" style="max-width:1000px"><div class="kick">RAMADAN 2027 · PRINTABLE PACK</div>
+<h1>Our Family Ramadan Planner &amp; Kids Activity Pack</h1>
+<p class="lead">19 gentle, printable pages to plan a calm Ramadan — and help your children <b>love</b> the blessed month, not just get through it.</p>
+<figure class="feature"><img src="img/shop/ramadan-planner.jpg" alt="Ramadan Family Planner cover and inside pages" width="1200" height="800"></figure>
+<p class="btns">{buy}</p>
+<h2>What's inside</h2><ul class="chk">{''.join(f'<li><b>{html.escape(a)}</b> — {html.escape(b)}</li>' for a, b in INSIDE)}</ul>
+<img src="img/shop/ramadan-planner-pages.jpg" alt="Pages from the Ramadan planner: cover, good deeds calendar, fasting stars and word search" width="1000" height="1500" loading="lazy" style="width:100%;max-width:560px;height:auto;margin:24px auto;border-radius:16px">
+<h2>Good to know</h2><ul><li>Instant PDF download in <b>A4 and US Letter</b>. Print at home as many times as you need for your family.</li>
+<li>Made for ages 3–12 and their mamas. Ramadan and Eid dates are left blank for your local moon sighting.</li>
+<li>Quran and hadith are quoted with their sources. For fiqh questions (like when a child must fast), please ask a qualified scholar.</li>
+<li>Personal, family and single-classroom use. Please don't share the file.</li></ul>
+<p class="btns">{buy}</p>
+<p>Planning ahead? Read <a href="ramadan-with-kids.html">Ramadan with Kids: The Complete Guide</a> and <a href="teach-kids-to-fast-ramadan.html">How to Teach Kids to Fast</a>.</p></section>''', og='img/shop/ramadan-planner.jpg')
+
 page('404.html', 'Page not found', 'This page could not be found.', '''
 <section class="wrap art c"><div class="kick">404</div><h1>This page wandered off</h1>
 <p class="lead">The page you were looking for isn't here. Try one of these instead:</p>
@@ -159,7 +188,7 @@ elif os.path.exists('ads.txt'):
 
 sm = open('sitemap.xml', encoding='utf-8').read()
 lastmod = re.search(r'<lastmod>(.*?)</lastmod>', sm).group(1)
-for p in ('resources.html', 'privacy.html', 'disclaimer.html', 'terms.html'):
+for p in ('ramadan-planner.html', 'resources.html', 'privacy.html', 'disclaimer.html', 'terms.html'):
     if f'/{p}</loc>' not in sm:
         sm = sm.replace('</urlset>', f'  <url><loc>{BASE}/{p}</loc><lastmod>{lastmod}</lastmod></url>\n</urlset>')
 open('sitemap.xml', 'w', encoding='utf-8').write(sm)

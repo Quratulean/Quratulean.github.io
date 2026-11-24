@@ -110,6 +110,7 @@ def build_post(meta, body_md, registry):
     related = ''
     if others:
         related = '<section class="related"><h2>Keep reading</h2><div class="cards">' + ''.join(card(a) for a in others) + '</div></section>'
+    promo = ('<div class="cta"><img src="img/shop/ramadan-planner.jpg" alt="Ramadan Family Planner"><div><b>Plan a calm, joyful Ramadan</b><p>19 printable pages: good-deeds calendar, fasting and salah trackers for kids, Quran tracker, du\'as, word search and more.</p><a class="btn" href="ramadan-planner.html">See the Ramadan Planner</a></div></div>' if 'ramadan' in meta['slug'] else '')
     signup = '<div class="signup" hidden><h3>Get the free Calm Mama Starter Kit</h3><p>4 printable cards for calmer days: phrases, Sunnah calm-down steps, a bedtime routine and a weekly planner.</p>' + SIGNUP_FORM + '</div>'
     schema = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": meta['title'],
                          "description": meta['description'], "datePublished": meta['date'],
@@ -122,6 +123,7 @@ def build_post(meta, body_md, registry):
 {hero}{toc_html}
 {body}
 {hub}
+{promo}
 {signup}
 <div class="cta"><img src="img/cover.jpg" alt="Hearts Before Habits book cover"><div><b>Want the full guide?</b><p>This article draws on <i>Hearts Before Habits</i> — a complete Islamic parenting guide with scripts, du'as, printables and a 30-day plan.</p><a class="btn" href="book.html">See the book</a> <a class="btn ghost" href="printables.html">Free printables</a> <a class="btn ghost" href="resources.html">Recommended books</a></div></div>
 {related}

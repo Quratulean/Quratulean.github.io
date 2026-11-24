@@ -43,6 +43,10 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - Article pins (2026-11-24): "Ramadan with Kids" 943504190726405824 and "Teach Kids to Fast" 943504190726405830 (board Ramadan with Kids); "Gentle Parenting in Islam" 943504190726405837 (board Gentle Muslim Parenting). Posting works with Zapier `create_pin` (the raw POST /v5/pins request returned "Invalid request body").
 - Scheduled task "Post daily Pinterest pin" (trig_01SkptkeMEhU4TnNWULzw7gc) runs daily ~10:17 Asia/Kolkata starting 2026-11-25 and posts the next unposted pin from a 13-pin queue (yelling, phrases, duas, quote, fajr, mama, quran, tantrums, burnout, allah, discipline, guide, phrases article pin), then idles. Idempotent: checks the board before posting.
 
+## Paid product
+- **Ramadan Family Planner & Kids Activity Pack** (19 pages, A4 + Letter, $7). Source: `tools/ramadan_pack.py <out_dir>` then `node tools/render_pack.js <out_dir>`. The PDFs are the product: NEVER commit them to this public repo; the owner uploads them to the shop (Payhip planned). Sales page `ramadan-planner.html` (built by `tools/site.py`); its buy button uses `shop_url` in `tools/site.json` (empty = "launching soon" → free kit sign-up). Previews in `img/shop/`. Ramadan articles show a promo box (publish.py).
+- GoDaddy cart for islamicparenting101.com created 2026-11-24 ($9.39 incl. fees, expires 2026-11-25 15:26 UTC); owner pays.
+
 ## Open work
 0. Money goal: $500 by 31 Dec 2026 — plan and owner actions in `docs/money-plan-december.md`. Domain chosen: islamicparenting101.com (owner buys at GoDaddy; then DNS + CNAME per the SEO skill).
 1. (Done) MailerLite sign-up works end to end. Optional: add a "check Promotions/Spam" note on thank-you + sign-up pages (tools/pages.py).
