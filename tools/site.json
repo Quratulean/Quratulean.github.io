@@ -1,8 +1,9 @@
 {
   "_help": "Fill these in once each account is approved, then run: python3 tools/site.py. Empty value = feature stays off.",
   "adsense_client": "",
-  "amazon_tag": "",
+  "amazon_tag": "islamicparent-20",
   "ga4_id": "",
   "shop_url": "",
-  "google_verify": "-bi67VswW4tzKWWxqOP8Ej_dPMff9jNuZFulo45xU1E"
+  "google_verify": "-bi67VswW4tzKWWxqOP8Ej_dPMff9jNuZFulo45xU1E",
+  "_payhip_url_pending_payments": "https://payhip.com/b/Cj8vS"
 }

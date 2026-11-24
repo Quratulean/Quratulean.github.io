@@ -15,6 +15,8 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - Articles live in `posts/<slug>.md` (front matter: title, description, date, kicker, type: pillar|cluster, pillar: <slug>, keywords).
 - Images: `python3 tools/featured.py [slug]` draws each article's featured image (`img/articles/<slug>.jpg`, 1200x800, used on cards, article top and og:image) and a tall Pinterest version (`pins/<slug>.jpg`, 1000x1500, used by "Save to Pinterest"). New article → add its headline + icon to `ART` in that script, run it, then publish.py. Needs `pip install markdown` and Playwright.
 - Build (always this order): `python3 tools/publish.py` (articles, sitemap, robots, articles.json) → `python3 tools/pages.py` (free-starter-kit, thank-you, contact) → `python3 tools/blog.py` (blog home index.html, Blog page articles.html with search + topic filter, topic-*.html pages, feed.xml RSS) → `python3 tools/site.py` (privacy, disclaimer, terms, resources = Amazon affiliate page, 404, shared footer, AdSense/GA head block, ads.txt). Then commit + push to `main`.
+- Amazon Associates (US) tracking id `islamicparent-20` is ON in `amazon_tag` (2026-11-24); no Amazon.in account yet.
+- Google Search Console: verified (HTML tag), sitemap.xml submitted, status Success, 31 pages found (2026-11-24).
 - Money switches live in `tools/site.json`: `adsense_client` (ca-pub-…), `amazon_tag` (Associates id), `ga4_id`, `shop_url`. Empty = off. Fill in when the owner's accounts are approved, rebuild, push.
 - Own domain: the scripts read `CNAME`. Only add `CNAME` after DNS points to GitHub Pages (steps in the SEO skill).
 - Voice: "The Wise Older Sister"; tagline *Heart first. Habit second.* Only well-attributed Quran/hadith; contested fiqh/aqidah neutral; "ask a qualified scholar".
@@ -45,6 +47,7 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - Scheduled task "Post daily Pinterest pin" (trig_01SkptkeMEhU4TnNWULzw7gc) runs daily ~10:17 Asia/Kolkata starting 2026-11-25 and posts the next unposted pin from a 13-pin queue (yelling, phrases, duas, quote, fajr, mama, quran, tantrums, burnout, allah, discipline, guide, phrases article pin), then idles. Idempotent: checks the board before posting.
 
 ## Paid product
+- Payhip product: https://payhip.com/b/Cj8vS (stored as `_payhip_url_pending_payments` in tools/site.json). As of 2026-11-24 the owner had NOT connected PayPal/Stripe in Payhip, so `shop_url` stays empty (button says "launching soon"). Once she confirms payments are connected, set `shop_url` to that URL, rebuild, push.
 - **Ramadan Family Planner & Kids Activity Pack** (19 pages, A4 + Letter, $7). Source: `tools/ramadan_pack.py <out_dir>` then `node tools/render_pack.js <out_dir>`. The PDFs are the product: NEVER commit them to this public repo; the owner uploads them to the shop (Payhip planned). Sales page `ramadan-planner.html` (built by `tools/site.py`); its buy button uses `shop_url` in `tools/site.json` (empty = "launching soon" → free kit sign-up). Previews in `img/shop/`. Ramadan articles show a promo box (publish.py).
 
 ## Open work
