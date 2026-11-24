@@ -1,0 +1,59 @@
+/* Islamic Parenting 101 — token snapshot (fallback when the design system
+   artifact can't be reached). Keep in sync with the "Islamic Parenting 101"
+   design-system artifact, tokens.json. Last sync: 2026-11-24. */
+:root {
+  /* Surfaces */
+  --surface:        #FBF5EC;
+  --surface-raised: #FFFFFF;
+  --surface-sunk:   #F3E6DA;
+
+  /* Ink */
+  --ink:       #3B2A20;
+  --ink-muted: #6B5A4E;
+
+  /* Accents */
+  --terracotta:      #A8553F;
+  --terracotta-soft: #D9917A;
+  --sage:            #4F7358;
+  --sage-soft:       #8FB39A;
+  --mustard:         #D9A94A;
+  --dusty-blue:      #4E7388;
+  --blush:           #F3D9CF;
+  --border:          #EADFCF;
+  --focus:           #A8553F;
+
+  /* Type families */
+  --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  --body:    Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --arabic:  "Scheherazade New", "Amiri", "Traditional Arabic", serif;
+
+  /* Spacing */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-8: 48px; --space-10: 64px; --space-12: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;   --radius-md: 16px;  --radius-lg: 22px;
+  --radius-xl: 40px;  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-card:  0 5px 0 #EADFCF;
+  --shadow-book:  0 30px 60px rgba(60,40,30,.35);
+  --shadow-float: 0 8px 24px rgba(59,42,32,.08);
+}
+
+/* Dark mode is for screens only. Don't use for printables. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface:        #1E1A14;
+    --surface-raised: #2A241B;
+    --surface-sunk:   #15110C;
+    --ink:            #F3ECE3;
+    --ink-muted:      #B8AA9A;
+    --terracotta:     #C9705A;
+    --sage:           #8EB197;
+    --mustard:        #E6C06E;
+    --dusty-blue:     #7FA2B6;
+    --blush:          #4A2A22;
+    --border:         #3A322A;
+  }
+}

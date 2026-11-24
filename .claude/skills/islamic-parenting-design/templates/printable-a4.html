@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Islamic Parenting 101 — Printable</title>
+<style>
+  @font-face{font-family:PF;font-weight:700;src:url(file:///home/claude/fonts/node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+  @font-face{font-family:PF;font-weight:800;src:url(file:///home/claude/fonts/node_modules/@fontsource/playfair-display/files/playfair-display-latin-800-normal.woff2)}
+  @font-face{font-family:PF;font-weight:700;font-style:italic;src:url(file:///home/claude/fonts/node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-italic.woff2)}
+  @font-face{font-family:Lato;font-weight:400;src:url(file:///home/claude/fonts/node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2)}
+  @font-face{font-family:Lato;font-weight:700;src:url(file:///home/claude/fonts/node_modules/@fontsource/lato/files/lato-latin-700-normal.woff2)}
+  @font-face{font-family:Lato;font-weight:900;src:url(file:///home/claude/fonts/node_modules/@fontsource/lato/files/lato-latin-900-normal.woff2)}
+
+  /* Tokens — do not change inside a one-off printable; change the design system instead. */
+  :root{
+    --surface:#FBF5EC; --surface-raised:#fff; --surface-sunk:#F3E6DA;
+    --ink:#3B2A20; --ink-muted:#6B5A4E;
+    --terracotta:#A8553F; --sage:#4F7358; --mustard:#D9A94A; --dusty-blue:#4E7388;
+    --blush:#F3D9CF; --border:#EADFCF;
+    --display:"PF","Iowan Old Style",Georgia,serif;
+    --body:Lato,sans-serif;
+    --radius-md:16px; --radius-lg:22px; --radius-pill:999px;
+    --shadow-card:0 5px 0 var(--border);
+  }
+
+  @page{size:A4;margin:20mm 18mm 22mm 18mm}
+  html,body{margin:0;padding:0;background:var(--surface);color:var(--ink);font-family:var(--body);font-size:12pt;line-height:1.5}
+
+  .kicker{font-weight:900;letter-spacing:4px;font-size:10pt;color:var(--terracotta);text-transform:uppercase;text-align:center}
+  h1{font-family:var(--display);font-weight:800;font-size:32pt;line-height:1.05;margin:4mm 0 2mm;text-align:center;letter-spacing:-0.3pt}
+  .sub{font-family:var(--display);font-style:italic;font-weight:700;color:var(--sage);text-align:center;font-size:14pt;margin:0 0 8mm}
+  .rule{width:28mm;height:1mm;background:var(--mustard);margin:4mm auto}
+
+  .card{background:var(--surface-raised);border-radius:var(--radius-md);padding:5mm;box-shadow:var(--shadow-card);margin-bottom:4mm}
+
+  /* Brand strip at the bottom of every page */
+  @page{@bottom-center{content:"ISLAMIC PARENTING 101  ·  quratulean.github.io";font-family:Lato,sans-serif;font-weight:900;font-size:8pt;letter-spacing:3pt;color:#4F7358}}
+</style></head>
+<body>
+
+<!-- ==== EDIT BELOW ==== -->
+
+<div class="kicker">PUT THE SECTION LABEL HERE</div>
+<h1>The headline goes here</h1>
+<div class="sub">A one-line italic subtitle in sage.</div>
+<div class="rule"></div>
+
+<div class="card">
+  <p>Your content. Keep one job per printable. Keep body text ≥ 12 pt, Arabic ≥ 22 pt with the arabic font family and line-height ≥ 1.9, and always paired with an English transliteration and translation.</p>
+</div>
+
+<!-- ==== EDIT ABOVE ==== -->
+
+</body></html>
