@@ -10,6 +10,7 @@ Working rule from the owner: do everything online; don't pile files on her compu
 
 ## Site system
 - Articles live in `posts/<slug>.md` (front matter: title, description, date, kicker, type: pillar|cluster, pillar: <slug>, keywords).
+- Images: `python3 tools/featured.py [slug]` draws each article's featured image (`img/articles/<slug>.jpg`, 1200x800, used on cards, article top and og:image) and a tall Pinterest version (`pins/<slug>.jpg`, 1000x1500, used by "Save to Pinterest"). New article → add its headline + icon to `ART` in that script, run it, then publish.py. Needs `pip install markdown` and Playwright.
 - Build: `python3 tools/publish.py` (pages, sitemap, robots, articles.json) and `python3 tools/pages.py` (free-starter-kit, thank-you, contact). Then commit + push to `main`.
 - Voice: "The Wise Older Sister"; tagline *Heart first. Habit second.* Only well-attributed Quran/hadith; contested fiqh/aqidah neutral; "ask a qualified scholar".
 - 14 articles live (4 pillars + 10 clusters). 12 are ~1,000–1,300 words and still need expanding to ~2,000 (same slugs). Status table: `docs/blog-content-plan.md`.
@@ -30,7 +31,7 @@ Working rule from the owner: do everything online; don't pile files on her compu
 ## Open work
 1. (Done) MailerLite sign-up works end to end. Optional: add a "check Promotions/Spam" note on thank-you + sign-up pages (tools/pages.py).
 2. Expand the 12 short articles to ~2,000 words; add Amazon link when live.
-3. Post week-1 pins after owner approval (host images in repo `pins/` for a public URL).
+3. Post week-1 pins after owner approval (tall pin images for all 14 articles are in `pins/`, public URL https://quratulean.github.io/pins/<slug>.jpg).
 4. Pinterest Business account; add website to profile; Google Search Console + sitemap.
 5. Weekly Monday report (also a scheduled task in her Claude account).
 

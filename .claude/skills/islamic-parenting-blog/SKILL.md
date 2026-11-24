@@ -69,7 +69,7 @@ Target **1,900–2,300 words** — long enough to fully answer, never padded. A 
    keywords: main keyword, related, related
    ---
    ```
-2. If the matching pin image exists, add a web copy to `img/` (resize to ~600 px wide JPG) and set `image:`. Full-size pin images for Pinterest posting go in `pins/` (public URL for the Pinterest API).
+2. Images: add the slug to `ART` in `tools/featured.py` (short headline, icon, tint) and run `python3 tools/featured.py <slug>` — it makes `img/articles/<slug>.jpg` (picked up automatically, no `image:` needed) and the tall pin `pins/<slug>.jpg` (public URL for the Pinterest API). Set `image:` only to override with a different picture.
 3. Run `python3 tools/publish.py` — it builds `<slug>.html` with the site's header/footer, byline, reading time, table of contents, Save-to-Pinterest button, related articles, book CTA and Article schema, and updates `articles.json`, the cards on `index.html` (latest 3) and `articles.html`, `sitemap.xml` and `robots.txt`.
 4. Check it: count words (aim 1,900–2,300), screenshot the page on phone (390 px) and desktop with Playwright, and read the rendered text once for typos, broken links and anything religious you're unsure of.
 5. Commit and push: `git add -A && git -c user.name="Tabasum Majeed" -c user.email="noreply@github.com" commit -m "Add article: <title>" && git -c push.negotiate=true push origin main`. GitHub Pages updates in about a minute; verify the live URL with WebFetch.

@@ -80,9 +80,11 @@ def build_post(meta, body_md, registry):
     toc_html = ''
     if len(toc) >= 3:
         toc_html = '<nav class="toc"><b>In this article</b><ol>' + ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc) + '</ol></nav>'
-    hero = f'<img class="pinimg" src="{meta["image"]}" alt="{html.escape(meta["title"])}">' if meta.get('image') else ''
+    hero = (f'<figure class="feature"><img src="{meta["image"]}" alt="{html.escape(meta["title"])}" width="1200" height="800" fetchpriority="high"></figure>'
+            if meta.get('image') else '')
+    pin_img = f'pins/{meta["slug"]}.jpg' if os.path.exists(f'pins/{meta["slug"]}.jpg') else img
     pin = ('https://www.pinterest.com/pin/create/button/?' +
-           urllib.parse.urlencode({'url': url, 'media': f'{BASE}/{img}', 'description': meta['title']}))
+           urllib.parse.urlencode({'url': url, 'media': f'{BASE}/{pin_img}', 'description': meta['title']}))
     me = next((a for a in registry if a['slug'] == meta['slug']), {})
     pillar_slug = meta.get('pillar') if meta.get('type') != 'pillar' else None
     by = {a['slug']: a for a in registry}
@@ -129,9 +131,16 @@ def build_post(meta, body_md, registry):
     open(f'{meta["slug"]}.html', 'w', encoding='utf-8').write(page)
     return words
 
+GUIDES = {'islamic-parenting-guide': 'Islamic Parenting', 'gentle-parenting-in-islam': 'Gentle Parenting',
+          'teaching-salah-by-age': 'Salah & Quran', 'ramadan-with-kids': 'Ramadan'}
+
 def card(a):
-    img = f'<img src="{a["image"]}" alt="">' if a.get('image') else '<div class="ph">☾</div>'
-    return f'<a class="card" href="{a["slug"]}.html">{img}<div><h3>{html.escape(a["title"])}</h3><p>{html.escape(a["description"])}</p></div></a>'
+    img = (f'<img src="{a["image"]}" alt="" width="1200" height="800" loading="lazy">' if a.get('image')
+           else '<div class="ph">☾</div>')
+    guide = a.get('pillar') or a['slug']
+    chip = GUIDES.get(guide, 'Islamic Parenting') + (' · Guide' if a.get('type') == 'pillar' else '')
+    return (f'<a class="card" href="{a["slug"]}.html" data-guide="{guide}">{img}<div><span class="chip">{html.escape(chip)}</span>'
+            f'<h3>{html.escape(a["title"])}</h3><p>{html.escape(a["description"])}</p><span class="more">Read the article →</span></div></a>')
 
 def replace_cards(fname, items):
     s = open(fname, encoding='utf-8').read()
@@ -149,6 +158,8 @@ def main():
     metas = []
     for p in posts:
         meta, body = read_post(p)
+        if not meta.get('image') and os.path.exists(f'img/articles/{meta["slug"]}.jpg'):
+            meta['image'] = f'img/articles/{meta["slug"]}.jpg'  # made by tools/featured.py
         by_slug[meta['slug']] = {k: meta[k] for k in ('slug', 'title', 'description', 'date') } | ({'image': meta['image']} if meta.get('image') else {}) | ({'type': meta['type']} if meta.get('type') else {}) | ({'pillar': meta['pillar']} if meta.get('pillar') else {})
         metas.append((meta, body))
     registry = sorted(by_slug.values(), key=lambda a: a['date'], reverse=True)
