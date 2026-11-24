@@ -40,9 +40,11 @@ Working rule from the owner: do everything online; don't pile files on her compu
 ## Pins posted (2026-11-24)
 - "Teaching Salah by Age" — pin 943504190726399898, board Teaching Kids Salah & Quran, link /teaching-salah-by-age.html.
 - "Heart First. Habit Second. Islamic Parenting 101" (brand cover pin) — pin 943504190726404005, board Hearts Before Habits Islamic Parenting Book, link / (home).
-- Scheduled task "Post daily Pinterest pin" (trig_01SkptkeMEhU4TnNWULzw7gc) runs daily ~10:17 Asia/Kolkata starting 2026-11-25 and posts one of: yelling pin → 10 phrases → quote → mama pin, then idles. Idempotent: checks the board before posting.
+- Article pins (2026-11-24): "Ramadan with Kids" 943504190726405824 and "Teach Kids to Fast" 943504190726405830 (board Ramadan with Kids); "Gentle Parenting in Islam" 943504190726405837 (board Gentle Muslim Parenting). Posting works with Zapier `create_pin` (the raw POST /v5/pins request returned "Invalid request body").
+- Scheduled task "Post daily Pinterest pin" (trig_01SkptkeMEhU4TnNWULzw7gc) runs daily ~10:17 Asia/Kolkata starting 2026-11-25 and posts the next unposted pin from a 13-pin queue (yelling, phrases, duas, quote, fajr, mama, quran, tantrums, burnout, allah, discipline, guide, phrases article pin), then idles. Idempotent: checks the board before posting.
 
 ## Open work
+0. Money goal: $500 by 31 Dec 2026 — plan and owner actions in `docs/money-plan-december.md`. Domain chosen: islamicparenting101.com (owner buys at GoDaddy; then DNS + CNAME per the SEO skill).
 1. (Done) MailerLite sign-up works end to end. Optional: add a "check Promotions/Spam" note on thank-you + sign-up pages (tools/pages.py).
 2. Expand the 12 short articles to ~2,000 words.
 3. When KDP shows the Amazon link: update book.html (replace "Coming soon on Amazon"), welcome email 4, the book promo pin (`img/pin-book.jpg`, not yet posted), and append to CLAUDE.md.
