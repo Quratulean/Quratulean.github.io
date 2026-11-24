@@ -1,6 +1,6 @@
 ---
 name: islamic-parenting-seo
-description: SEO manager for the Islamic Parenting 101 website (quratulean.github.io, or its own domain once CNAME is set) and its Pinterest account — keyword research for Muslim-mom parenting topics, on-page SEO checks and fixes for articles, technical SEO (sitemap, canonical, schema, Search Console, domain moves), internal linking between pillar and cluster articles, Pinterest SEO for pins and boards, and AdSense/affiliate readiness. Use whenever the user asks about SEO, Google ranking, keywords, traffic, Search Console, "why isn't my site on Google", meta titles/descriptions, a site audit, getting more visitors, or making the site ready for ads — even if they don't say "SEO".
+description: SEO manager for the Islamic Parenting 101 website (https://islamicparenting101.com, served by GitHub Pages from repo Quratulean/Quratulean.github.io) and its Pinterest account — keyword research for Muslim-mom parenting topics, on-page SEO checks and fixes for articles, technical SEO (sitemap, canonical, schema, Search Console, domain moves), internal linking between pillar and cluster articles, Pinterest SEO for pins and boards, and AdSense/affiliate readiness. Use whenever the user asks about SEO, Google ranking, keywords, traffic, Search Console, "why isn't my site on Google", meta titles/descriptions, a site audit, getting more visitors, or making the site ready for ads — even if they don't say "SEO".
 ---
 
 # Islamic Parenting 101 — SEO

@@ -1,6 +1,6 @@
 ---
 name: islamic-parenting-blog
-description: Manages the Islamic Parenting 101 blog/website (https://quratulean.github.io, GitHub repo Quratulean/Quratulean.github.io) and writes in-depth, SEO-friendly ~2000-word articles for Muslim mothers — researching keywords, writing with accurate Quran and hadith sources, publishing to the site, linking pins and the book Hearts Before Habits, and keeping the sitemap, article list and tracker up to date. Use whenever the user wants a blog post or article, asks to update/manage/fix the website or blog, wants an article for a pin, wants more website content or SEO, or mentions the website, blog, quratulean.github.io or her domain — even if they just say "write an article about ...".
+description: Manages the Islamic Parenting 101 blog/website (https://islamicparenting101.com, GitHub repo Quratulean/Quratulean.github.io) and writes in-depth, SEO-friendly ~2000-word articles for Muslim mothers — researching keywords, writing with accurate Quran and hadith sources, publishing to the site, linking pins and the book Hearts Before Habits, and keeping the sitemap, article list and tracker up to date. Use whenever the user wants a blog post or article, asks to update/manage/fix the website or blog, wants an article for a pin, wants more website content or SEO, or mentions the website, blog, islamicparenting101.com, quratulean.github.io or her domain — even if they just say "write an article about ...".
 ---
 
 # Islamic Parenting 101 — Blog Manager & Article Writer
@@ -9,7 +9,7 @@ You run the blog for Tabasum Majeed's Islamic Parenting 101 brand. The site exis
 
 ## The site (know before you touch it)
 
-- Live: https://quratulean.github.io (if a `CNAME` file exists in the repo, that custom domain is the address).
+- Live: https://islamicparenting101.com (if a `CNAME` file exists in the repo, that custom domain is the address).
 - Repo: `Quratulean/Quratulean.github.io`, branch `main`, GitHub Pages serves the repo root. Everything is online; never save anything to the user's computer.
 - Get it: `git clone --depth 1 https://github.com/Quratulean/quratulean.github.io /home/claude/quratulean.github.io` (attach the repo with `add_repo` push access first if the session doesn't have it; if pushes are refused, ask the user to give the Claude GitHub App access to the repo).
 - Structure: hand-built pages (`index.html`, `book.html`, `articles.html`, `printables.html`, `about.html`), `style.css`, `anim.js` (gentle animations), `img/`, `printables/*.pdf`, `articles.json` (registry of every article), `posts/<slug>.md` (article sources), `tools/publish.py` (publisher), `sitemap.xml`, `robots.txt`.
@@ -70,16 +70,16 @@ Target **1,900–2,300 words** — long enough to fully answer, never padded. A 
    ---
    ```
 2. Images: add the slug to `ART` in `tools/featured.py` (short headline, icon, tint) and run `python3 tools/featured.py <slug>` — it makes `img/articles/<slug>.jpg` (picked up automatically, no `image:` needed) and the tall pin `pins/<slug>.jpg` (public URL for the Pinterest API). Set `image:` only to override with a different picture.
-3. Run `python3 tools/publish.py` — it builds `<slug>.html` with the site's header/footer, byline, reading time, table of contents, Save-to-Pinterest button, related articles, book CTA and Article schema, and updates `articles.json`, the cards on `index.html` (latest 3) and `articles.html`, `sitemap.xml` and `robots.txt`.
+3. Run the full build: `python3 tools/publish.py && python3 tools/pages.py && python3 tools/blog.py && python3 tools/site.py`. publish.py builds `<slug>.html` (header/footer, byline, reading time, TOC, Save-to-Pinterest, share buttons, author box, disclaimer note, related articles, book CTA, Article + Breadcrumb schema), sitemap and articles.json; blog.py rebuilds the home page, Blog page (search + topics), topic pages and RSS feed; site.py syncs nav, footer, legal pages and the Amazon/AdSense switches. New article images: add it to `ART` in tools/featured.py and run `python3 tools/featured.py <slug>` first.
 4. Check it: count words (aim 1,900–2,300), screenshot the page on phone (390 px) and desktop with Playwright, and read the rendered text once for typos, broken links and anything religious you're unsure of.
 5. Commit and push: `git add -A && git -c user.name="Tabasum Majeed" -c user.email="noreply@github.com" commit -m "Add article: <title>" && git -c push.negotiate=true push origin main`. GitHub Pages updates in about a minute; verify the live URL with WebFetch.
 6. Update the tracker's Pillar/cluster status table (words, status), run an orphan/link check, then: article live URL, link the matching pin to it, note the date. Tell the user in two or three lines: title, link, word count — and which pin now points to it.
 
 ## Managing the site
 
-- **Weekly rhythm**: 1–2 new articles matching that week's pins; refresh the home page's latest cards (publish.py does it); keep printables fresh before seasons (e.g. Ramadan calendar by mid-December).
+- **Weekly rhythm**: 1–2 new articles matching that week's pins; the home page's latest cards refresh on every full build (blog.py); keep printables fresh before seasons (e.g. Ramadan calendar by mid-December).
 - **Book launch**: when the Amazon link exists, replace the "Coming soon on Amazon" button on `book.html` and the CTA text in `tools/publish.py` with a real "Buy on Amazon" link, then re-run publish.py so every article updates.
-- **Custom domain** (when the user buys one, e.g. islamicparenting101.com): add a `CNAME` file containing the bare domain, push, give the user the GoDaddy DNS steps (A records for @ → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; CNAME www → quratulean.github.io), then enforce HTTPS once GitHub shows the certificate. Re-run publish.py so canonical links and the sitemap use the new domain.
+- **Custom domain** (DONE 2026-11-24: islamicparenting101.com is live; steps kept for reference): add a `CNAME` file containing the bare domain, push, give the user the GoDaddy DNS steps (A records for @ → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; CNAME www → quratulean.github.io), then enforce HTTPS once GitHub shows the certificate. Re-run publish.py so canonical links and the sitemap use the new domain.
 - **Design changes**: edit `style.css` / hand-built pages directly and keep the warm floral look; check on phone and desktop before pushing; keep animations gentle and respect reduced motion.
 - **Never** delete pages that pins already link to — Pinterest links live for years. If a page must move, leave a small page at the old URL that links to (or meta-refreshes to) the new one.
 

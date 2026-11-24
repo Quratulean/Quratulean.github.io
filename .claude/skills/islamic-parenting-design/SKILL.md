@@ -1,6 +1,6 @@
 ---
 name: islamic-parenting-design
-description: Design any visual for the Islamic Parenting 101 brand — printables, worksheets, planners, trackers, badges, certificates, infographics, email headers, social graphics (not Pinterest pins), book interior pages, Canva-ready templates, free lead-magnet PDFs, or any new logo or icon variant — on-brand and on first try, using the project's design system (tokens + components). Use whenever the user asks for anything visual for Islamic Parenting 101, Tabasum Majeed, Hearts Before Habits, or the quratulean.github.io site — even when the user doesn't say "design" (e.g. "make a salah tracker", "I need a worksheet", "put together a lead magnet", "do a printable", "make a gift pdf"). For Pinterest pins specifically, use pinterest-viral-pins instead; this skill is for everything else visual.
+description: Design any visual for the Islamic Parenting 101 brand — printables, worksheets, planners, trackers, badges, certificates, infographics, email headers, social graphics (not Pinterest pins), book interior pages, Canva-ready templates, free lead-magnet PDFs, or any new logo or icon variant — on-brand and on first try, using the project's design system (tokens + components). Use whenever the user asks for anything visual for Islamic Parenting 101, Tabasum Majeed, Hearts Before Habits, or the islamicparenting101.com site — even when the user doesn't say "design" (e.g. "make a salah tracker", "I need a worksheet", "put together a lead magnet", "do a printable", "make a gift pdf"). For Pinterest pins specifically, use pinterest-viral-pins instead; this skill is for everything else visual.
 ---
 
 # Islamic Parenting 101 — Design
@@ -69,7 +69,7 @@ Why it's the default: WeasyPrint respects page breaks, hyphenation and `@page` s
 
 ### 2. HTML → PNG with Playwright (for pins' siblings, badges, social graphics)
 
-The script is at `/home/claude/pinskill/render.js`: `node render.js <in.html> <out.png> [width] [height]`. The HTML uses the same fonts via `file://` paths. Write to `/home/claude/quratulean.github.io/img/<descriptive-name>.jpg` (convert PNG → JPG for file size if it's a flat design), commit to the repo, and reference the public URL `https://quratulean.github.io/img/<name>.jpg`.
+The script is at `/home/claude/pinskill/render.js`: `node render.js <in.html> <out.png> [width] [height]`. The HTML uses the same fonts via `file://` paths. Write to `/home/claude/islamicparenting101.com/img/<descriptive-name>.jpg` (convert PNG → JPG for file size if it's a flat design), commit to the repo, and reference the public URL `https://islamicparenting101.com/img/<name>.jpg`.
 
 Why not use Canva here: the whole point of these designs is that they're generated from the design system in code, so when a token changes you re-render and ship. Canva breaks that loop.
 
@@ -98,7 +98,7 @@ The design makes it look right. The copy makes it worth saving. Use **The Wise O
 - Open with a real moment or a specific promise ("A gentle salah tracker that doesn't shame"), not a category label ("Salah Tracker for Kids").
 - One job per asset. A tracker tracks. A certificate celebrates. A worksheet works through one question. Don't stuff three things onto a printable to "add value" — it reads as cluttered.
 - Qur'an and hadith get full attribution (verse number or book + grade). On contested fiqh/aqidah stay neutral and point to a qualified scholar.
-- Credit: every asset ends with "Islamic Parenting 101 · quratulean.github.io" in `pin-brand` or `kicker` style.
+- Credit: every asset ends with "Islamic Parenting 101 · islamicparenting101.com" in `pin-brand` or `kicker` style.
 - The book plug goes once on a multi-page asset, never on a one-pager.
 
 ## Accessibility & legibility

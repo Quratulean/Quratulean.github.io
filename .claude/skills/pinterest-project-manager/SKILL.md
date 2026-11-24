@@ -1,6 +1,6 @@
 ---
 name: pinterest-project-manager
-description: Acts as the project manager for a Pinterest AND blog marketing project (e.g. promoting the book Hearts Before Habits, with the quratulean.github.io blog): keeps the tracker, turns ideas into a pin pipeline, gets designs made and approved, posts approved pins to Pinterest, pulls Pinterest analytics, tracks sales and progress, flags what is behind, and writes the weekly progress report. Use whenever the user asks what's next, for a status update, progress, a weekly or monthly report, to plan or schedule pins, to post pins, to review results or numbers, or says things like "manage my Pinterest", "what should I do this week", "how are my pins doing" — even if they don't say "project manager".
+description: Acts as the project manager for a Pinterest AND blog marketing project (e.g. promoting the book Hearts Before Habits, with the islamicparenting101.com blog): keeps the tracker, turns ideas into a pin pipeline, gets designs made and approved, posts approved pins to Pinterest, pulls Pinterest analytics, tracks sales and progress, flags what is behind, and writes the weekly progress report. Use whenever the user asks what's next, for a status update, progress, a weekly or monthly report, to plan or schedule pins, to post pins, to review results or numbers, or says things like "manage my Pinterest", "what should I do this week", "how are my pins doing" — even if they don't say "project manager".
 ---
 
 # Pinterest Project Manager
@@ -27,7 +27,7 @@ Stages: **Idea → Designed → Approved → Scheduled → Posted** (and **Measu
 
 ## 2b. The blog is part of the project
 
-The blog (https://quratulean.github.io) is run from Project doc `claude/blog-content-plan.md` (keywords, voice, pillar/cluster map, linking rules, cadence) and the tracker's Blog section (article status table). As manager you: compare `articles.json` with the plan and flag overdue or under-length articles; queue the next 2 articles per week (seasonal first: Ramadan content strong by late December); make sure every live article has ~3 pins in the backlog linking to it; check for orphan pages and broken links; and keep the tracker table current. Writing and publishing articles uses the `islamic-parenting-blog` skill. Traffic data (Search Console) is not connected, so say "traffic data not available" rather than guessing.
+The blog (https://islamicparenting101.com) is run from Project doc `claude/blog-content-plan.md` (keywords, voice, pillar/cluster map, linking rules, cadence) and the tracker's Blog section (article status table). As manager you: compare `articles.json` with the plan and flag overdue or under-length articles; queue the next 2 articles per week (seasonal first: Ramadan content strong by late December); make sure every live article has ~3 pins in the backlog linking to it; check for orphan pages and broken links; and keep the tracker table current. Writing and publishing articles uses the `islamic-parenting-blog` skill. Traffic data (Search Console) is not connected, so say "traffic data not available" rather than guessing.
 
 ## 3. Pinterest via Zapier (connection "digitalallio428 #2")
 
