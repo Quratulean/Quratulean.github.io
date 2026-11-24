@@ -103,17 +103,59 @@ HOME_SCHEMA = json.dumps({"@context": "https://schema.org", "@graph": [
      "founder": {"@type": "Person", "name": "Tabasum Majeed"}}]}, ensure_ascii=False)
 feat, rest = REG[0], REG[1:]
 topic_tiles = ''.join(f'<a class="tile" href="{f}"><b>{html.escape(n)}</b><span>{html.escape(b)}</span></a>' for _, n, f, b in TOPICS)
-page('index.html', 'Islamic Parenting 101 — A Gentle Islamic Parenting Blog for Muslim Moms',
-     'A gentle Islamic parenting blog for Muslim moms: practical help from the Quran and Sunnah on salah, Ramadan, discipline without yelling, and raising children who love Allah.', f'''
-<section class="bloghead"><div class="wrap"><div class="kick">THE BLOG FOR MUSLIM MOMS</div><h1>Heart first. Habit second.</h1>
-<p class="lead">Gentle, practical Islamic parenting from the Quran and Sunnah — less yelling, more connection.</p></div></section>
-<div class="wrap blog"><div class="main">
-<h2 class="sec">Latest post</h2>{card(feat, big=True)}
-<h2 class="sec">Recent posts</h2><!--CARDS--><div class="cards two">{''.join(card(a) for a in rest[:8])}</div><!--/CARDS-->
-<p class="c"><a class="btn ghost" href="articles.html">See all {len(REG)} posts →</a></p>
-<h2 class="sec">Browse by topic</h2><div class="tiles">{topic_tiles}</div>
-<div class="signup" hidden><h3>Get the free Calm Mama Starter Kit</h3><p>4 printable cards for calmer days: phrases, Sunnah calm-down steps, a bedtime routine and a weekly planner.</p><div class="ml-embedded" data-form="JjOyLM"></div></div>
-</div>{sidebar()}</div>
+by = {a['slug']: a for a in REG}
+guides = [by[s_] for s_, *_ in TOPICS if s_ in by]
+def guide_card(a):
+    return (f'<a class="gcard" href="{a["slug"]}.html"><img src="{a.get("image", "img/cover.jpg")}" alt="" width="1200" height="800" loading="lazy">'
+            f'<div><span class="chip">{html.escape(TNAME.get(a["slug"], "Guide"))} · Guide</span><b>{html.escape(a["title"])}</b>'
+            f'<span class="meta">{mins(a)} min read</span></div></a>')
+hero_imgs = [a.get('image') for a in guides[:3] if a.get('image')]
+collage = ''.join(f'<img class="h{i}" src="{im}" alt="" width="1200" height="800">' for i, im in enumerate(hero_imgs))
+PET = ''.join(f'<i style="left:{l}%;animation-delay:-{d}s;animation-duration:{t}s;--s:{sc}"></i>' for l, d, t, sc in [(6,0,14,1),(18,5,17,.7),(31,9,15,.9),(47,2,19,.6),(63,7,16,1.1),(78,11,18,.8),(90,4,15,.7)])
+page('index.html', 'Islamic Parenting 101 — Gentle Islamic Parenting for Muslim Moms',
+     'Gentle, practical Islamic parenting for Muslim moms: help from the Quran and Sunnah on salah, Ramadan, discipline without yelling and raising children who love Allah. Free printables and guides.', f'''
+<section class="hero home"><div class="flor" aria-hidden="true"></div><div class="petals" aria-hidden="true">{PET}</div>
+<div class="wrap hg"><div><div class="kick">FOR MUSLIM MOMS</div>
+<h1>Raise children who love Allah — from the heart.</h1>
+<p class="lead">Gentle, practical Islamic parenting from the Quran and Sunnah. Less yelling, more connection, and good habits that grow from a loving heart.</p>
+<div class="btns"><a class="btn" href="#start">Start here</a><a class="btn ghost" href="free-starter-kit.html">Free starter kit</a></div>
+<p class="trust"><span>✓ Quran &amp; hadith with sources</span><span>✓ Real scripts for hard moments</span><span>✓ Free printables</span></p></div>
+<div class="collage" aria-hidden="true">{collage}</div></div></section>
+
+<section class="wrap hsec" id="start"><div class="kick c">START HERE</div><h2 class="c">Four gentle guides to begin with</h2>
+<p class="c lead narrow">Each guide is a complete, step-by-step starting point. Pick the one closest to what your home needs right now.</p>
+<div class="guides">{''.join(guide_card(a) for a in guides)}</div></section>
+
+<section class="giftband"><div class="wrap gb"><div><span class="chip">Free gift</span><h2>The Calm Mama Starter Kit</h2>
+<p>4 printable cards for gentler, calmer days: phrases every child needs to hear, 7 Sunnah steps before you raise your voice, a calm bedtime routine with du'as, and a simple weekly planner.</p>
+<p><a class="btn" href="free-starter-kit.html">Get the free kit</a></p></div>
+<img src="img/starter-kit.jpg" alt="Pages from the free Calm Mama Starter Kit" width="900" height="900" loading="lazy"></div></section>
+
+<section class="wrap hsec"><div class="kick c">FROM THE BLOG</div><h2 class="c">Latest posts</h2>
+<!--CARDS--><div class="cards">{''.join(card(a) for a in REG[:6])}</div><!--/CARDS-->
+<p class="c"><a class="btn ghost" href="articles.html">See all {len(REG)} posts →</a></p></section>
+
+<section class="wrap hsec"><div class="kick c">BROWSE</div><h2 class="c">Find help by topic</h2><div class="tiles four">{topic_tiles}</div></section>
+
+<section class="wrap hsec c4"><div class="kick c">THE APPROACH</div><h2 class="c">The 4 C's of heart-first parenting</h2>
+<div class="grid4"><div class="t teal"><b>1. Connection</b><p>Build the bond first. Without it, every piece of advice feels like criticism.</p></div>
+<div class="t green"><b>2. Character</b><p>Children copy what they see. You are their most beautiful example.</p></div>
+<div class="t gold"><b>3. Consciousness</b><p>Introduce Allah with love, as a warm and present reality, not a threat.</p></div>
+<div class="t brown"><b>4. Correction</b><p>Only then, discipline that nurtures (tarbiyah) and never humiliates.</p></div></div></section>
+
+<section class="wrap hsec"><div class="kick c">MADE FOR YOUR FAMILY</div><h2 class="c">Planners &amp; books</h2>
+<div class="shop2">
+<a class="prod" href="ramadan-planner.html"><img src="img/shop/ramadan-planner.jpg" alt="Ramadan Family Planner and Kids Activity Pack" width="1200" height="800" loading="lazy"><div><span class="chip">Printable · $7</span><b>Ramadan Family Planner &amp; Kids Activity Pack</b><p>19 pages to plan a calm, joyful Ramadan: good-deeds calendar, fasting and salah trackers, du'as and kids' activities.</p><span class="more">See inside →</span></div></a>
+<a class="prod" href="book.html"><div class="bookimg"><img src="img/cover.jpg" alt="Hearts Before Habits book cover" loading="lazy"></div><div><span class="chip">Book · Coming to Amazon</span><b>Hearts Before Habits</b><p>The complete guide to the 4 C's, with scripts for hard moments, du'as for your children and a 30-day plan.</p><span class="more">About the book →</span></div></a>
+</div></section>
+
+<section class="wrap hsec"><div class="aboutrow"><img src="img/logo-v2.jpg" alt="Islamic Parenting 101 logo" width="160" height="160" loading="lazy">
+<div><div class="kick">ASSALAMU ALAYKUM</div><h2>I'm Tabasum, and I'm so glad you're here.</h2>
+<p>I write for Muslim mothers who love their children deeply and want to raise them close to Allah, without the yelling, guilt and power struggles. Everything here is rooted in the Quran and the example of the Prophet ﷺ, and written to be used tonight, not someday.</p>
+<p><a href="about.html">Read my story →</a></p></div></div></section>
+
+<section class="band c"><div class="wrap"><h2>Daily ideas on Pinterest</h2><p>Save gentle reminders, du'as and printables for your family.</p>
+<a class="btn" href="https://www.pinterest.com/digitalallio428/" target="_blank" rel="noopener">Follow on Pinterest</a></div></section>
 <script type="application/ld+json">{HOME_SCHEMA}</script>''', on='index.html')
 
 # ---------- all posts
