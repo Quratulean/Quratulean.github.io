@@ -18,7 +18,9 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - Email sign-up: MailerLite (account 2818911, embed form `JjOyLM`, group "Starter Kit") — `forms.js` + `tools/pages.py`.
 - Contact form: Formspree `https://formspree.io/f/mljbopga` (messages go to quratt428@gmail.com).
 - Free gift PDF: `gift/calm-mama-starter-kit.pdf` (source was /home/claude/gift/kit.py — not in repo).
-- Welcome automation "Welcome Series - Calm Mama Starter Kit" is ACTIVE in MailerLite (4 emails: day 0, 2, 4, 7). Sender: islamicparentingresearchteam@gmail.com (verified). Live sign-up test not yet confirmed.
+- Welcome automation "Welcome Series - Calm Mama Starter Kit" is ACTIVE in MailerLite (4 emails: day 0, 2, 4, 7). Sender: islamicparentingresearchteam@gmail.com (verified).
+- Double opt-in is OFF on the "Free Starter Kit" form (2026-11-24, owner request) so the welcome email sends immediately; reCAPTCHA stays on. Form redirect URL = https://quratulean.github.io/thank-you.html (PDF download there). Live test confirmed: welcome email arrives (lands in Gmail Promotions, which is normal for a Gmail sender; a custom-domain sender later will help).
+- Earlier test sign-ups that stayed "unconfirmed" will not get the series; re-sign-up fixes it.
 
 ## Accounts
 - Pinterest digitalallio428 is a personal account; switch to free Business (owner action). Boards exist (8 new ones created 2026-11-23).
@@ -26,7 +28,7 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - Book buy link (Amazon) is MISSING — add to book.html and pins when KDP is live.
 
 ## Open work
-1. Confirm MailerLite test sign-up end to end (confirm email → welcome email → PDF link).
+1. (Done) MailerLite sign-up works end to end. Optional: add a "check Promotions/Spam" note on thank-you + sign-up pages (tools/pages.py).
 2. Expand the 12 short articles to ~2,000 words; add Amazon link when live.
 3. Post week-1 pins after owner approval (host images in repo `pins/` for a public URL).
 4. Pinterest Business account; add website to profile; Google Search Console + sitemap.
