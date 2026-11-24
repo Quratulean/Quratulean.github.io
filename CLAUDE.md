@@ -2,6 +2,7 @@
 
 Owner: Tabasum Majeed. Goal: sell the book *Hearts Before Habits* (Islamic parenting, for Muslim mothers) and grow Pinterest (digitalallio428) + this blog (https://islamicparenting101.com — custom domain since 2026-11-24 via `CNAME`; old https://quratulean.github.io redirects; GitHub Pages from `main`).
 Working rule from the owner: do everything online; don't pile files on her computer. Never enter her passwords; she handles sign-ups/verification clicks/CAPTCHAs.
+**Owner preference (2026-11-24): every task she must do herself is given as a ready-to-paste message for the Claude in Chrome extension** (one code block per task; it signs her in nowhere and stops for passwords, payments, tax/ID details and CAPTCHAs, which she does), plus one line saying what to send back.
 
 ## Skills (in .claude/skills/)
 - `islamic-parenting-blog` — write/publish ~2,000-word SEO articles (read `docs/blog-content-plan.md` first).
