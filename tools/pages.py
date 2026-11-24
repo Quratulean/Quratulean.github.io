@@ -16,7 +16,8 @@ def page(fname, title, desc, body, noindex=False, on=None):
     head = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{html.escape(desc)}">', head)
     head = re.sub(r' class=on', '', head)
     if on: head = head.replace(f'<a href="{on}">', f'<a href="{on}" class=on>', 1)
-    head = head.replace('</head>', '<meta name="p:domain_verify" content="7ef4da08a9bc8f1ef568d82c019d2f69"/>\n</head>', 1)
+    if 'p:domain_verify' not in head:
+        head = head.replace('</head>', '<meta name="p:domain_verify" content="7ef4da08a9bc8f1ef568d82c019d2f69"/>\n</head>', 1)
     if noindex: head = head.replace('</head>', '<meta name="robots" content="noindex,nofollow">\n</head>', 1)
     open(fname, 'w', encoding='utf-8').write(head + '<main>' + body + '</main>' + foot)
 

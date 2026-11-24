@@ -53,7 +53,8 @@ def set_meta(head, title, desc, img, url):
     head = re.sub(r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{t}">', head)
     head = re.sub(r'<meta property="og:description" content=".*?">', f'<meta property="og:description" content="{d}">', head)
     head = re.sub(r'<meta property="og:image" content=".*?">', f'<meta property="og:image" content="{BASE}/{img}">', head)
-    head = head.replace('</head>', f'<link rel="canonical" href="{url}">\n<meta property="og:type" content="article">\n<meta name="p:domain_verify" content="7ef4da08a9bc8f1ef568d82c019d2f69"/>\n</head>', 1)
+    verify = '' if 'p:domain_verify' in head else '<meta name="p:domain_verify" content="7ef4da08a9bc8f1ef568d82c019d2f69"/>\n'
+    head = head.replace('</head>', f'<link rel="canonical" href="{url}">\n<meta property="og:type" content="article">\n{verify}</head>', 1)
     head = re.sub(r' class=on', '', head)
     head = head.replace('<a href="articles.html">', '<a href="articles.html" class=on>', 1)
     return head
