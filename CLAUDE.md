@@ -24,15 +24,25 @@ Working rule from the owner: do everything online; don't pile files on her compu
 - Earlier test sign-ups that stayed "unconfirmed" will not get the series; re-sign-up fixes it.
 
 ## Accounts
-- Pinterest digitalallio428 is a personal account; switch to free Business (owner action). Boards exist (8 new ones created 2026-11-23).
+- Pinterest digitalallio428 — **Business account**, display name "Islamic Parenting 101 | Hearts Before Habits", website quratulean.github.io **claimed** (p:domain_verify meta already inserted by tools/publish.py and tools/pages.py; content "7ef4da08a9bc8f1ef568d82c019d2f69"). Profile logo: `img/logo-v2.jpg` (the round H&H mark). 13 boards exist.
 - GitHub Quratulean/Quratulean.github.io; GoDaddy (no domain yet; plan islamicparenting101.com later); Canva connected.
-- Book buy link (Amazon) is MISSING — add to book.html and pins when KDP is live.
+- Zapier Pinterest connection: "digitalallio428 #2" (selected_api PinterestCLIAPI) — used by the pinterest-project-manager skill to post pins via `create_pin`.
+- KDP: both formats submitted 2026-11-24, status "In review" (up to 72 h). Paperback $14.99 (8.5x11, standard color, 76 pp). Kindle $4.99 (70% royalty). Worldwide rights. No KDP Select. AI disclosure: texts "some sections, extensive editing"; cover one/few AI-generated images, minimal editing; tool "Claude"; translations none. Amazon buy link still MISSING until books go live.
+
+## Brand / design system
+- Published as a Claude design-system artifact titled "Islamic Parenting 101": tokens (cream #FBF5EC, terracotta #A8553F, mustard #D9A94A, sage #4F7358, blush #F3D9CF, dusty blue #4E7388, plus Playfair Display + Lato), the brand book (README), and components Cover / PinCard / ArticleHero / BrandButton. Any new output should reach for those tokens and components first.
+- Round profile logo (H&H monogram) source: `img/logo-v2.jpg` (also uploaded to the design system under assets/Logos). Featured "Heart first. Habit second." cover pin: `img/pin-cover.jpg`.
+
+## Pins posted (2026-11-24)
+- "Teaching Salah by Age" — pin 943504190726399898, board Teaching Kids Salah & Quran, link /teaching-salah-by-age.html.
+- "Heart First. Habit Second. Islamic Parenting 101" (brand cover pin) — pin 943504190726404005, board Hearts Before Habits Islamic Parenting Book, link / (home).
+- Scheduled task "Post daily Pinterest pin" (trig_01SkptkeMEhU4TnNWULzw7gc) runs daily ~10:17 Asia/Kolkata starting 2026-11-25 and posts one of: yelling pin → 10 phrases → quote → mama pin, then idles. Idempotent: checks the board before posting.
 
 ## Open work
 1. (Done) MailerLite sign-up works end to end. Optional: add a "check Promotions/Spam" note on thank-you + sign-up pages (tools/pages.py).
-2. Expand the 12 short articles to ~2,000 words; add Amazon link when live.
-3. Post week-1 pins after owner approval (tall pin images for all 14 articles are in `pins/`, public URL https://quratulean.github.io/pins/<slug>.jpg).
-4. Pinterest Business account; add website to profile; Google Search Console + sitemap.
-5. Weekly Monday report (also a scheduled task in her Claude account).
+2. Expand the 12 short articles to ~2,000 words.
+3. When KDP shows the Amazon link: update book.html (replace "Coming soon on Amazon"), welcome email 4, the book promo pin (`img/pin-book.jpg`, not yet posted), and append to CLAUDE.md.
+4. Google Search Console + sitemap submission; later, domain islamicparenting101.com.
+5. Weekly Monday report (also a scheduled task in her Claude account) — now covers Pinterest analytics (unlock after a few weeks of data).
 
-See `docs/` for the content plan and the Amazon sales outlook.
+See `docs/` for the content plan and the Amazon sales outlook, and the project doc `claude/publishing-and-launch-status.md` for the live KDP state.
