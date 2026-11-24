@@ -94,6 +94,13 @@ FILTERS = ('<div class="filters" role="group" aria-label="Filter posts by topic"
            + ''.join(f'<button data-f="{s}">{html.escape(n)}</button>' for s, n, _, _ in TOPICS) + '</div>')
 
 # ---------- home
+HOME_SCHEMA = json.dumps({"@context": "https://schema.org", "@graph": [
+    {"@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Islamic Parenting 101",
+     "description": "A gentle Islamic parenting blog for Muslim moms.", "publisher": {"@id": BASE + "/#org"},
+     "potentialAction": {"@type": "SearchAction", "target": BASE + "/articles.html?q={search_term_string}", "query-input": "required name=search_term_string"}},
+    {"@type": "Organization", "@id": BASE + "/#org", "name": "Islamic Parenting 101", "url": BASE + "/",
+     "logo": BASE + "/img/icon-512.png", "sameAs": ["https://www.pinterest.com/digitalallio428/"],
+     "founder": {"@type": "Person", "name": "Tabasum Majeed"}}]}, ensure_ascii=False)
 feat, rest = REG[0], REG[1:]
 topic_tiles = ''.join(f'<a class="tile" href="{f}"><b>{html.escape(n)}</b><span>{html.escape(b)}</span></a>' for _, n, f, b in TOPICS)
 page('index.html', 'Islamic Parenting 101 — A Gentle Islamic Parenting Blog for Muslim Moms',
@@ -106,7 +113,8 @@ page('index.html', 'Islamic Parenting 101 — A Gentle Islamic Parenting Blog fo
 <p class="c"><a class="btn ghost" href="articles.html">See all {len(REG)} posts →</a></p>
 <h2 class="sec">Browse by topic</h2><div class="tiles">{topic_tiles}</div>
 <div class="signup" hidden><h3>Get the free Calm Mama Starter Kit</h3><p>4 printable cards for calmer days: phrases, Sunnah calm-down steps, a bedtime routine and a weekly planner.</p><div class="ml-embedded" data-form="JjOyLM"></div></div>
-</div>{sidebar()}</div>''', on='index.html')
+</div>{sidebar()}</div>
+<script type="application/ld+json">{HOME_SCHEMA}</script>''', on='index.html')
 
 # ---------- all posts
 page('articles.html', 'Blog — Islamic Parenting 101', 'Every post on the Islamic Parenting 101 blog: gentle, Sunnah-rooted help for Muslim moms on salah, Quran, Ramadan, discipline and faith.', f'''

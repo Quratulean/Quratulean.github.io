@@ -116,6 +116,12 @@ def build_post(meta, body_md, registry):
                          "description": meta['description'], "datePublished": meta['date'],
                          "author": {"@type": "Person", "name": AUTHOR}, "image": f'{BASE}/{img}',
                          "mainEntityOfPage": url, "keywords": meta.get('keywords', '')}, ensure_ascii=False)
+    crumbs = [("Home", BASE + "/"), ("Blog", BASE + "/articles.html")]
+    if pillar_slug and pillar_slug in by:
+        crumbs.append((by[pillar_slug]['title'], f'{BASE}/{pillar_slug}.html'))
+    crumbs.append((meta['title'], url))
+    schema = schema[:-1] + ', "breadcrumb": ' + json.dumps({"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]}, ensure_ascii=False) + '}'
     enc = urllib.parse.quote
     share = (f'<div class="share"><b>Share this post</b>'
              f'<a href="{html.escape(pin)}" target="_blank" rel="noopener">Pinterest</a>'

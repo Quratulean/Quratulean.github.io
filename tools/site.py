@@ -16,7 +16,7 @@ BASE = f'https://{DOMAIN}'
 PIN = 'https://www.pinterest.com/digitalallio428/'
 UPDATED = 'November 24, 2026'
 
-FOOTER = f'''<footer><div class="wrap"><div class="fl"><img src="img/logo.png" alt=""><div><b>Islamic Parenting 101</b><br>Nurturing children's hearts before shaping their habits.</div></div>
+FOOTER = f'''<footer><div class="wrap"><div class="fl"><img src="img/logo-v2.jpg" alt="" width="64" height="64"><div><b>Islamic Parenting 101</b><br>Nurturing children's hearts before shaping their habits.</div></div>
 <div class="fr"><a href="{PIN}" target="_blank" rel="noopener">Follow on Pinterest</a> · <a href="book.html">Hearts Before Habits</a> · <a href="printables.html">Free printables</a> · <a href="free-starter-kit.html">Free gift</a> · <a href="ramadan-planner.html">Ramadan Planner</a> · <a href="resources.html">Recommended</a> · <a href="contact.html">Contact</a></div>
 <p class="sm legal"><a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer &amp; Affiliate Disclosure</a> · <a href="terms.html">Terms of Use</a></p>
 <p class="sm">© 2026 Tabasum Majeed · Islamic Parenting 101. This site shares general educational and spiritual guidance; it is not a substitute for professional or scholarly advice. As an Amazon Associate I earn from qualifying purchases.</p></div></footer>'''
@@ -177,6 +177,12 @@ NAV = [('index.html', 'Home'), ('articles.html', 'Blog'), ('ramadan-planner.html
 POSTS = {a['slug'] + '.html' for a in json.load(open('articles.json', encoding='utf-8'))}
 
 
+MENU = ('<button class="menubtn" type="button" aria-label="Open menu" aria-expanded="false">'
+        '<span></span><span></span><span></span></button>')
+ICONS = ('<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png">'
+         '<link rel="apple-touch-icon" href="/img/icon-180.png">')
+
+
 def nav_for(f):
     cur = 'articles.html' if (f in POSTS or f.startswith('topic-')) else f
     return '<nav>' + ''.join(f'<a href="{h}"{" class=on" if h == cur else ""}>{t}</a>' for h, t in NAV) + '</nav>'
@@ -185,7 +191,10 @@ def nav_for(f):
 for f in sorted(glob.glob('*.html')):
     s = open(f, encoding='utf-8').read()
     s = re.sub(r'<footer>.*?</footer>', lambda m: FOOTER, s, count=1, flags=re.S)
-    s = re.sub(r'<nav>.*?</nav>', lambda m: nav_for(f), s, count=1, flags=re.S)
+    s = re.sub(r'(<button class="menubtn".*?</button>)?<nav>.*?</nav>', lambda m: MENU + nav_for(f), s, count=1, flags=re.S)
+    s = re.sub(r'<link rel="(?:icon|apple-touch-icon)"[^>]*>\n?', '', s)
+    s = s.replace('</head>', ICONS + '\n</head>', 1)
+    s = s.replace('<img src="img/logo.png" alt="Islamic Parenting 101 logo">', '<img src="img/logo-v2.jpg" alt="Islamic Parenting 101 logo" width="46" height="46">')
     s = re.sub(r'<!--SITEHEAD-->.*?<!--/SITEHEAD-->\n?', '', s, flags=re.S)
     s = s.replace('</head>', site_head() + '\n</head>', 1)
     if f == '404.html':  # served from any path, so links must be absolute
